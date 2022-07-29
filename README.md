@@ -1,4 +1,4 @@
-#Cool Ideas Mod
+# Cool Ideas Mod
 ---
 Cool Ideas that I have, had, and will have all combined into one mod.
 
