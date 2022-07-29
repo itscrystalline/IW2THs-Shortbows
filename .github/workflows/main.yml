@@ -23,7 +23,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Gradle Build Action
-        run: ./gradlew build
+        run: ../CoolIdeasMod/CoolIdeasMod/gradlew build
     
       - name: Publish to Github Releases
         uses: Kir-Antipov/mc-publish@v3.1
