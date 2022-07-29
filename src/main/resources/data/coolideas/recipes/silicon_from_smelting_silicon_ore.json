@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "group": "silicon",
+  "ingredient": {
+    "item": "coolideas:silicon_ore"
+  },
+  "result": "coolideas:silicon",
+  "experience": 0.3,
+  "cookingtime": 300
+}

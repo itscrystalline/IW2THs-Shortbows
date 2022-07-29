@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#X ",
+    "  X"
+  ],
+  "key": {
+    "#": {
+      "item": "coolideas:iron_rod"
+    },
+    "X": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "coolideas:tweezers"
+  }
+}

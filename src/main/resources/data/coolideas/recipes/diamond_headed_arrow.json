@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "#",
+    "Y"
+  ],
+  "key": {
+    "#": {
+      "item": "coolideas:iron_rod"
+    },
+    "X": {
+      "item": "coolideas:diamond_arrow_head"
+    },
+    "Y": {
+      "item": "minecraft:feather"
+    }
+  },
+  "result": {
+    "item": "coolideas:diamond_headed_arrow",
+    "count": 4
+  }
+}

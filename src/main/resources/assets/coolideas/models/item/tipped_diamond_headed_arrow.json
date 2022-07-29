@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "coolideas:items/tipped_diamond_headed_arrow_head",
+        "layer1": "coolideas:items/tipped_diamond_headed_arrow_base"
+    }
+}

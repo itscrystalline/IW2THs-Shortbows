@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX ",
+    "XS#",
+    " ##"
+  ],
+  "key": {
+    "S": {
+      "item": "coolideas:wooden_shortbow"
+    },
+    "X": {
+      "item": "coolideas:iron_rod"
+    },
+    "#": {
+      "item": "coolideas:latex_band"
+    }
+  },
+  "result": {
+    "item": "coolideas:iron_shortbow"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX ",
+    "XS#",
+    " # "
+  ],
+  "key": {
+    "S": {
+      "item": "coolideas:iron_shortbow"
+    },
+    "X": {
+      "item": "coolideas:diamond_rod"
+    },
+    "#": {
+      "item": "coolideas:carbon_fiber"
+    }
+  },
+  "result": {
+    "item": "coolideas:diamond_shortbow"
+  }
+}

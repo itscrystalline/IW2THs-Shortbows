@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "group": "silicon",
+  "ingredient": {
+    "item": "coolideas:raw_silicon"
+  },
+  "result": "coolideas:silicon",
+  "experience": 0.3,
+  "cookingtime": 250
+}
