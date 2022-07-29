@@ -4,6 +4,7 @@
   "package": "com.thaddev.coolideas.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "MultiShotEnchantmentMixin"
   ],
   "injectors": {
     "defaultRequire": 1
