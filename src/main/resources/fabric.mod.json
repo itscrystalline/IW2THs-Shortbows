@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "coolideas",
+  "version": "${version}",
+
+  "name": "Cool Ideas Mod",
+  "description": "This is just some cool ideas i have that i put into this mod.",
+  "authors": [
+    "ThadDev (IWant2TryHard)"
+  ],
+  "contact": {
+    "homepage": "https://thaddev.com/",
+    "sources": "https://github.com/MyNameTsThad/CoolIdeasMod/tree/fabric-119"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/coolideas/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.thaddev.coolideas.CoolIdeasMod"
+    ]
+  },
+  "mixins": [
+    "coolideas.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.6",
+    "fabric": "*",
+    "minecraft": "~1.19",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

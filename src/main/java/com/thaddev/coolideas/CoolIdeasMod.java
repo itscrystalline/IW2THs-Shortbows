@@ -1,67 +1,15 @@
 package com.thaddev.coolideas;
 
-import com.mojang.logging.LogUtils;
-import com.thaddev.coolideas.mechanics.inits.BlockInit;
-import com.thaddev.coolideas.mechanics.inits.ConfiguredFeaturesInit;
-import com.thaddev.coolideas.mechanics.inits.EffectInit;
-import com.thaddev.coolideas.mechanics.inits.EnchantmentInit;
-import com.thaddev.coolideas.mechanics.inits.EntityTypeInit;
-import com.thaddev.coolideas.mechanics.inits.GlobalLootModifierInit;
-import com.thaddev.coolideas.mechanics.inits.ItemInit;
-import com.thaddev.coolideas.mechanics.inits.PlacedFeaturesInit;
-import com.thaddev.coolideas.mechanics.inits.PotionInit;
-import com.thaddev.coolideas.mechanics.inits.PotionRecipeInit;
-import com.thaddev.coolideas.mechanics.inits.RecipeSerializerInit;
-import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+public class CoolIdeasMod implements ModInitializer {
+	public static final String MODID = "coolideas";
+	public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
 
-@Mod(CoolIdeasMod.MODID)
-public class CoolIdeasMod {
-    public static final String MODID = "coolideas";
-    public static final Logger LOGGER = LogUtils.getLogger();
-    public static CoolIdeasMod instance;
-
-    public Minecraft mc;
-
-    public CoolIdeasMod() {
-        instance = this;
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
-        modEventBus.addListener(this::setup);
-        ItemInit.ITEMS.register(modEventBus);
-        EntityTypeInit.ENTITIES.register(modEventBus);
-        EnchantmentInit.ENCHANTMENTS.register(modEventBus);
-        EffectInit.MOB_EFFECTS.register(modEventBus);
-        PotionInit.POTIONS.register(modEventBus);
-        BlockInit.BLOCKS.register(modEventBus);
-        ConfiguredFeaturesInit.CONFIGURED_FEATURES.register(modEventBus);
-        PlacedFeaturesInit.PLACED_FEATURES.register(modEventBus);
-        GlobalLootModifierInit.GLOBAL_LOOT_MODIFIERS.register(modEventBus);
-        RecipeSerializerInit.RECIPES.register(modEventBus);
-
-        mc = Minecraft.getInstance();
-    }
-
-    public void setup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(PotionRecipeInit::register);
-    }
-
-    public void printMessage(String message) {
-        if (mc != null) {
-            mc.gui.getChat().addMessage(Component.nullToEmpty(message));
-        }
-    }
+	@Override
+	public void onInitialize() {
+		LOGGER.info("Hello Fabric world!");
+	}
 }
