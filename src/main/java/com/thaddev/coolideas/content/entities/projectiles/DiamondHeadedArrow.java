@@ -1,10 +1,8 @@
 package com.thaddev.coolideas.content.entities.projectiles;
 
 import com.google.common.collect.Sets;
-import com.thaddev.coolideas.CoolIdeasMod;
 import com.thaddev.coolideas.mechanics.inits.EntityTypeInit;
 import com.thaddev.coolideas.mechanics.inits.ItemInit;
-import com.thaddev.coolideas.util.ColorUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
@@ -13,7 +11,6 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -52,16 +49,13 @@ public class DiamondHeadedArrow extends AbstractArrow {
     private boolean fixedColor;
     private boolean shotByShortbow;
 
-    int hitTimes;
     private boolean isHoming;
-    LivingEntity prevTarget;
     LivingEntity target;
 
     public DiamondHeadedArrow(EntityType<? extends AbstractArrow> type, Level world) {
         super(type, world);
         setBaseDamage(4D);
         setPierceLevel((byte) 5);
-        hitTimes = getPierceLevel();
         //CoolIdeasMod.instance.printMessage(ColorUtils.from("(%$green)Init Velocity: " + getDeltaMovement()));
     }
 
@@ -69,7 +63,6 @@ public class DiamondHeadedArrow extends AbstractArrow {
         super(EntityTypeInit.DIAMOND_HEADED_ARROW.get(), shooter, world);
         setBaseDamage(4D);
         setPierceLevel((byte) 5);
-        hitTimes = getPierceLevel();
         //CoolIdeasMod.instance.printMessage(ColorUtils.from("(%$green)Init Velocity: " + getDeltaMovement()));
     }
 
@@ -126,8 +119,6 @@ public class DiamondHeadedArrow extends AbstractArrow {
     }
 
     public void setHoming(boolean homing) {
-        setPierceLevel(homing ? (byte) 1 : (byte) 5);
-        hitTimes = getPierceLevel();
         isHoming = homing;
     }
 
@@ -158,7 +149,7 @@ public class DiamondHeadedArrow extends AbstractArrow {
 
     public void tick() {
         super.tick();
-        if (inGroundTime > 20 && this.shotByShortbow || hitTimes <= 0) {
+        if (inGroundTime > 20 && this.shotByShortbow) {
             this.discard();
         }
         if (this.isHoming() && (!this.inGround || this.inGroundTime <= 10)) {
@@ -315,7 +306,9 @@ public class DiamondHeadedArrow extends AbstractArrow {
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
-        hitTimes--;
+        if (result.getEntity().getUUID().equals(this.target.getUUID())) {
+            this.discard();
+        }
         super.onHitEntity(result);
     }
 

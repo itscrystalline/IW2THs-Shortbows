@@ -3,16 +3,16 @@ loaderVersion="[41,)"
 license="All rights reserved"
 
 [[mods]]
-modId="coolideas"
-version="1.0.0" #mandatory
-displayName="Cool Ideas Mod" #mandatory
+modId = "coolideas"
+version = "1.0.1" #mandatory
+displayName = "Cool Ideas Mod" #mandatory
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
-#displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
-logoFile="coolideas.png" #optional
-credits="ThadDev (IWant2TryHard)" #optional
-authors="ThadDev (IWant2TryHard)" #optional
+displayURL = "https://github.com/MyNameTsThad/CoolIdeasMod" #optional
+logoFile = "coolideas.png" #optional
+credits = "ThadDev (IWant2TryHard)" #optional
+authors = "ThadDev (IWant2TryHard)" #optional
 #displayTest="MATCH_VERSION" # MATCH_VERSION is the default if nothing is specified (#optional)
 
-description='''
+description = '''
 This is just some cool ideas i have that i put into this mod.
 '''
