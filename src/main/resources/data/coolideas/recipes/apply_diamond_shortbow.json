@@ -1,0 +1,12 @@
+{
+  "type": "coolideas:smithing_special_apply_diamond_shortbow",
+  "addition": {
+    "item": "coolideas:silicon_pcb"
+  },
+  "base": {
+    "item": "coolideas:diamond_shortbow"
+  },
+  "result": {
+    "item": "coolideas:diamond_shortbow"
+  }
+}

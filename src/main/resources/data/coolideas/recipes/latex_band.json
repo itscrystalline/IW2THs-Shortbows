@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X#X",
+    "XXX"
+  ],
+  "key": {
+    "#": {
+      "item": "coolideas:rubber_band"
+    },
+    "X": {
+      "item": "coolideas:spider_web"
+    }
+  },
+  "result": {
+    "item": "coolideas:latex_band"
+  }
+}

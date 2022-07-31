@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "coolideas:raw_rubber_bottle"
+  },
+  "result": "coolideas:rubber_bottle",
+  "experience": 0.5,
+  "cookingtime": 200
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#N#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "coolideas:silicon"
+    },
+    "N": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "result": {
+    "item": "coolideas:silicon_pcb"
+  }
+}

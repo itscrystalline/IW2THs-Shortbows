@@ -1,0 +1,12 @@
+{
+  "type": "coolideas:smithing_special_apply_silicon_pcb",
+  "addition": {
+    "item": "coolideas:microchip"
+  },
+  "base": {
+    "item": "coolideas:silicon_pcb"
+  },
+  "result": {
+    "item": "coolideas:silicon_pcb"
+  }
+}

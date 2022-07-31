@@ -4,7 +4,10 @@
   "package": "com.thaddev.coolideas.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "MultiShotEnchantmentMixin"
+    "AxeItemMixin",
+    "EnchantmentMixin",
+    "LivingEntityMixin",
+    "MultishotEnchantmentMixin"
   ],
   "injectors": {
     "defaultRequire": 1
