@@ -307,7 +307,7 @@ public class DiamondHeadedArrow extends AbstractArrow {
     @Override
     protected void onHitEntity(@NotNull EntityHitResult result) {
         super.onHitEntity(result);
-        if (result.getEntity().getUUID().equals(this.target.getUUID())) {
+        if (this.target != null && result.getEntity().getUUID().equals(this.target.getUUID())) {
             this.discard();
         }
     }
