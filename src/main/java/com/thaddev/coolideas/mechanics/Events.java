@@ -2,6 +2,7 @@ package com.thaddev.coolideas.mechanics;
 
 import com.thaddev.coolideas.CoolIdeasMod;
 import com.thaddev.coolideas.content.entities.projectiles.DiamondHeadedArrow;
+import com.thaddev.coolideas.content.entities.projectiles.ShortBowArrow;
 import com.thaddev.coolideas.mechanics.inits.EffectInit;
 import com.thaddev.coolideas.mechanics.inits.ItemInit;
 import net.minecraft.core.BlockPos;
@@ -58,9 +59,8 @@ public class Events {
             int toReduce = amplifier > 3 ? ((amplifier - 1) * 2) + 3 : amplifier * 2;
             event.getEntity().invulnerableTime = 20 - toReduce;
         }
-        if (event.getSource().getDirectEntity() instanceof DiamondHeadedArrow && event.getSource().getEntity() instanceof Player player) {
+        if ((event.getSource().getDirectEntity() instanceof DiamondHeadedArrow | event.getSource().getDirectEntity() instanceof ShortBowArrow) && event.getSource().getEntity() instanceof Player player) {
             player.level.playSound(null, player.position().x, player.position().y, player.position().z, SoundEvents.ARROW_HIT_PLAYER, SoundSource.PLAYERS, 0.3F, 0.5F);
         }
-
     }
 }
