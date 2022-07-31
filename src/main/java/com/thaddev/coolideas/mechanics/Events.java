@@ -15,7 +15,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.level.BlockEvent;
@@ -31,21 +30,19 @@ public class Events {
                 && !event.getFinalState().getBlock().getDescriptionId().contains("stripped")){
             Level level = player.getLevel();
             BlockPos blockpos = event.getPos();
-            BlockState blockState = level.getBlockState(blockpos);
 
             InteractionHand otherHand = event.getContext().getHand() == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
             if (player.getItemInHand(otherHand).getItem() == Items.GLASS_BOTTLE){
                 ItemStack stack = player.getItemInHand(otherHand);
                 ItemStack newStack = new ItemStack(ItemInit.RAW_RUBBER_BOTTLE.get(), 1);
-                BlockPos pos = event.getPos();
                 stack.shrink(1);
-                player.level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1F, 1F);
+                player.level.playSound(null, blockpos.getX(), blockpos.getY(), blockpos.getZ(), SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1F, 1F);
                 if (stack.isEmpty()) {
                     player.getInventory().removeItem(stack);
                     player.setItemInHand(otherHand, newStack);
                 } else {
                     if (!player.addItem(newStack)) {
-                        ItemEntity drop = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), newStack);
+                        ItemEntity drop = new ItemEntity(level, blockpos.getX(), blockpos.getY(), blockpos.getZ(), newStack);
                         level.addFreshEntity(drop);
                     }
                 }

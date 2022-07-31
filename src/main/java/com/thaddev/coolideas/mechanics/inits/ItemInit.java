@@ -74,7 +74,9 @@ public class ItemInit {
     public static final RegistryObject<Item> DIAMOND_ARROW_HEAD = ITEMS.register("diamond_arrow_head",
         () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_COMBAT)));
     public static final RegistryObject<Item> CARBON_FIBER = ITEMS.register("carbon_fiber",
-        () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
+        () -> new Item(new Item.Properties()
+            .tab(CreativeModeTab.TAB_MATERIALS)
+            .fireResistant()));
     public static final RegistryObject<Item> RAW_SILICON = ITEMS.register("raw_silicon",
         () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
     public static final RegistryObject<Item> SILICON = ITEMS.register("silicon",
