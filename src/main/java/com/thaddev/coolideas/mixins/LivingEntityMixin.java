@@ -17,17 +17,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
 public class LivingEntityMixin {
-    @Inject(method = "damage", at = @At("TAIL"))
+    @Inject(method = "damage", at = @At("RETURN"))
     public void damage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         LivingEntity thisEntity = (LivingEntity) (Object) this;
-        if (!thisEntity.isInvulnerableTo(source)) {
-            StatusEffectInstance effect;
-            if ((effect = thisEntity.getStatusEffect(EffectInit.VULNERABILITY)) != null) {
-                int amplifier = Math.min(effect.getAmplifier() + 1, 4);
-                int toReduce = amplifier > 3 ? ((amplifier - 1) * 2) + 3 : amplifier * 2;
-                thisEntity.timeUntilRegen = 1;
-                //idk why this isnt working
-            }
+        StatusEffectInstance effect;
+        if ((effect = thisEntity.getStatusEffect(EffectInit.VULNERABILITY)) != null) {
+            int amplifier = Math.min(effect.getAmplifier() + 1, 4);
+            int toReduce = amplifier > 3 ? ((amplifier - 1) * 2) + 3 : amplifier * 2;
+            thisEntity.timeUntilRegen = 20 - toReduce;
         }
     }
 
