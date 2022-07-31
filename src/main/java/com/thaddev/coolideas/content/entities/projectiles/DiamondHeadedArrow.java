@@ -305,11 +305,11 @@ public class DiamondHeadedArrow extends AbstractArrow {
     }
 
     @Override
-    protected void onHitEntity(EntityHitResult result) {
+    protected void onHitEntity(@NotNull EntityHitResult result) {
+        super.onHitEntity(result);
         if (result.getEntity().getUUID().equals(this.target.getUUID())) {
             this.discard();
         }
-        super.onHitEntity(result);
     }
 
     //HOMING BEHAVIOR

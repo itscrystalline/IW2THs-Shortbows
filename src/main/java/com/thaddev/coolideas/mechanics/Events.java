@@ -2,21 +2,16 @@ package com.thaddev.coolideas.mechanics;
 
 import com.thaddev.coolideas.CoolIdeasMod;
 import com.thaddev.coolideas.content.entities.projectiles.DiamondHeadedArrow;
-import com.thaddev.coolideas.content.entities.projectiles.ShortBowArrow;
 import com.thaddev.coolideas.mechanics.inits.EffectInit;
 import com.thaddev.coolideas.mechanics.inits.ItemInit;
-import com.thaddev.coolideas.util.ColorUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -26,9 +21,6 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-
-import java.awt.*;
-import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = CoolIdeasMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Events {
@@ -47,6 +39,7 @@ public class Events {
                 ItemStack newStack = new ItemStack(ItemInit.RAW_RUBBER_BOTTLE.get(), 1);
                 BlockPos pos = event.getPos();
                 stack.shrink(1);
+                player.level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1F, 1F);
                 if (stack.isEmpty()) {
                     player.getInventory().removeItem(stack);
                     player.setItemInHand(otherHand, newStack);

@@ -3,13 +3,12 @@ package com.thaddev.coolideas.mechanics.inits;
 import com.thaddev.coolideas.CoolIdeasMod;
 import com.thaddev.coolideas.content.items.materials.MicrochipItem;
 import com.thaddev.coolideas.content.items.materials.SiliconPCBItem;
-import com.thaddev.coolideas.content.items.tools.DebugItem;
+import com.thaddev.coolideas.content.items.tools.TweezersItem;
 import com.thaddev.coolideas.content.items.weapons.DiamondHeadedArrowItem;
 import com.thaddev.coolideas.content.items.weapons.DiamondShortBowItem;
 import com.thaddev.coolideas.content.items.weapons.IronShortBowItem;
 import com.thaddev.coolideas.content.items.weapons.TippedDiamondHeadedArrowItem;
 import com.thaddev.coolideas.content.items.weapons.WoodenShortBowItem;
-import com.thaddev.coolideas.content.items.tools.TweezersItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -87,7 +86,4 @@ public class ItemInit {
             .tab(CreativeModeTab.TAB_MATERIALS)
             .stacksTo(1)
             .rarity(Rarity.UNCOMMON)));
-
-    public static final RegistryObject<Item> DEBUG_ITEM = ITEMS.register("debug_item",
-        () -> new DebugItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 }
