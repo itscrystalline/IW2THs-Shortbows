@@ -17,11 +17,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
 public class LivingEntityMixin {
-    @Inject(method = "damage", at = @At("RETURN"))
+    @Inject(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", shift = At.Shift.BEFORE))
     public void damage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         LivingEntity thisEntity = (LivingEntity) (Object) this;
         StatusEffectInstance effect;
-        if ((effect = thisEntity.getStatusEffect(EffectInit.VULNERABILITY)) != null) {
+        if ((effect = thisEntity.getStatusEffect(EffectInit.VULNERABILITY)) != null && thisEntity.timeUntilRegen > 10f) {
             int amplifier = Math.min(effect.getAmplifier() + 1, 4);
             int toReduce = amplifier > 3 ? ((amplifier - 1) * 2) + 3 : amplifier * 2;
             thisEntity.timeUntilRegen = 20 - toReduce;
