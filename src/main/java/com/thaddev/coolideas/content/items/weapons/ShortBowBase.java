@@ -3,11 +3,14 @@ package com.thaddev.coolideas.content.items.weapons;
 import com.thaddev.coolideas.content.entities.projectiles.DiamondHeadedArrow;
 import com.thaddev.coolideas.content.entities.projectiles.ShortBowArrow;
 import com.thaddev.coolideas.mechanics.damagesources.RubberBandHitDamage;
+import com.thaddev.coolideas.mechanics.inits.EnchantmentInit;
 import com.thaddev.coolideas.util.ColorUtils;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ArrowItem;
@@ -15,6 +18,7 @@ import net.minecraft.item.BowItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.potion.PotionUtil;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -73,31 +77,29 @@ public class ShortBowBase extends BowItem {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (user instanceof ServerPlayerEntity player) {
             ItemStack itemstack = player.getArrowType(player.getStackInHand(hand));
-            //boolean inherit = EnchantmentHelper.getTagEnchantmentLevel(EnchantmentInit.INHERIT.get(), player.getItemInHand(hand)) > 0;
-            //float precisionChance = EnchantmentHelper.getTagEnchantmentLevel(EnchantmentInit.PRECISION.get(), player.getItemInHand(hand)) == 1 ? (2f / 3f) :
-            //(EnchantmentHelper.getTagEnchantmentLevel(EnchantmentInit.PRECISION.get(), player.getItemInHand(hand)) == 2 ? 0.5f : 1f);
-            //EntityAttributeInstance attributeinstance = player.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-            //double strengthBoost = (attributeinstance != null && inherit ? attributeinstance.getValue() - attributeinstance.getBaseValue() : 0);
+            boolean inherit = EnchantmentHelper.getLevel(EnchantmentInit.INHERIT, player.getStackInHand(hand)) > 0;
+            float precisionChance = EnchantmentHelper.getLevel(EnchantmentInit.PRECISION, player.getStackInHand(hand)) == 1 ? (2f / 3f) :
+                (EnchantmentHelper.getLevel(EnchantmentInit.PRECISION, player.getStackInHand(hand)) == 2 ? 0.5f : 1f);
+            double damage = player.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+            double baseDamage = player.getAttributeBaseValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+            double strengthBoost = (inherit ? damage - baseDamage : 0);
 
             boolean flag = player.getAbilities().creativeMode || (EnchantmentHelper.getLevel(Enchantments.INFINITY, player.getStackInHand(hand)) > 0 && itemstack.getCount() > 0);
             if (!itemstack.isEmpty() || flag) {
                 float rng = (float) Math.random();
-                if (rng <= (getRubberbandHitChance()/* * precisionChance*/)/* + ((strengthBoost / 2f) * 0.1f)*/) {
-                    player.damage(new RubberBandHitDamage(), (float) (getRubberbandHitDamage()/* + strengthBoost*/));
-//                    if (strengthBoost > 0){
-//                        PotionUtils.getPotion(itemstack).getEffects().forEach(effect -> {
-//                            if (effect.getEffect().isInstantenous()){
-////                                player.addEffect(new MobEffectInstance(effect.getEffect(), 1, (effect.getAmplifier() + 1) > 1 ?
-////                                        (int) Math.round(Math.floor(effect.getAmplifier() / 2f)) :
-////                                        effect.getAmplifier()));
-//                                effect.getEffect().applyInstantenousEffect(null, player, player, (effect.getAmplifier() + 1) > 1 ?
-//                                    (int) Math.round(Math.floor(effect.getAmplifier() / 2f)) :
-//                                    effect.getAmplifier(), 1);
-//                            } else {
-//                                player.addEffect(new MobEffectInstance(effect.getEffect(), effect.getDuration() / 20, effect.getAmplifier()));
-//                            }
-//                        });
-//                    }
+                if (rng <= (getRubberbandHitChance() * precisionChance) + ((strengthBoost / 2f) * 0.1f)) {
+                    player.damage(new RubberBandHitDamage(), (float) (getRubberbandHitDamage() + strengthBoost));
+                    if (strengthBoost > 0) {
+                        PotionUtil.getPotion(itemstack).getEffects().forEach(effect -> {
+                            if (effect.getEffectType().isInstant()) {
+                                effect.getEffectType().applyInstantEffect(null, player, player, (effect.getAmplifier() + 1) > 1 ?
+                                    (int) Math.round(Math.floor(effect.getAmplifier() / 2f)) :
+                                    effect.getAmplifier(), 1);
+                            } else {
+                                player.addStatusEffect(new StatusEffectInstance(effect.getEffectType(), effect.getDuration() / 20, effect.getAmplifier()));
+                            }
+                        });
+                    }
                 }
                 onStoppedUsing(player.getStackInHand(hand), world, player);
                 return TypedActionResult.success(player.getStackInHand(hand));

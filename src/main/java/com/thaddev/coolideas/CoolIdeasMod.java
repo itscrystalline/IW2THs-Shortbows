@@ -4,6 +4,7 @@ import com.thaddev.coolideas.mechanics.Events;
 import com.thaddev.coolideas.mechanics.inits.BlockInit;
 import com.thaddev.coolideas.mechanics.inits.ConfiguredFeaturesInit;
 import com.thaddev.coolideas.mechanics.inits.EffectInit;
+import com.thaddev.coolideas.mechanics.inits.EnchantmentInit;
 import com.thaddev.coolideas.mechanics.inits.EntityTypeInit;
 import com.thaddev.coolideas.mechanics.inits.ItemInit;
 import com.thaddev.coolideas.mechanics.inits.LootTableModifierInit;
@@ -30,7 +31,8 @@ public class CoolIdeasMod implements ModInitializer {
 		ConfiguredFeaturesInit.registerConfiguredFeatures();
         ItemInit.registerItems();
         LootTableModifierInit.modifyLootTables();
-        EntityTypeInit.registerEntityTypes();
+		EntityTypeInit.registerEntityTypes();
+		EnchantmentInit.registerEnchantments();
 		BlockInit.registerBlocks();
 		OreGenerationInit.generateOres();
 		EffectInit.registerEffects();
