@@ -3,7 +3,6 @@ package com.thaddev.coolideas.mechanics.recipes;
 import com.google.gson.JsonObject;
 import com.thaddev.coolideas.content.items.materials.MicrochipItem;
 import com.thaddev.coolideas.content.items.materials.SiliconPCBItem;
-import com.thaddev.coolideas.content.items.weapons.DiamondShortBowItem;
 import com.thaddev.coolideas.content.items.weapons.ShortBowBase;
 import com.thaddev.coolideas.mechanics.inits.ItemInit;
 import com.thaddev.coolideas.mechanics.inits.RecipeSerializerInit;
@@ -54,7 +53,7 @@ public class ApplyDiamondShortbowRecipe extends UpgradeRecipe {
     }
 
     public @NotNull RecipeSerializer<?> getSerializer() {
-        return RecipeSerializerInit.APPLY_SILICON_PCB.get();
+        return RecipeSerializerInit.APPLY_DIAMOND_SHORTBOW.get();
     }
 
     public static class Serializer implements RecipeSerializer<ApplyDiamondShortbowRecipe> {
