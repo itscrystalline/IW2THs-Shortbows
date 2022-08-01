@@ -1,9 +1,12 @@
 package com.thaddev.coolideas.mechanics.inits;
 
 import com.thaddev.coolideas.CoolIdeasMod;
+import com.thaddev.coolideas.mixins.BrewingRecipeRegistryMixin;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.item.Items;
 import net.minecraft.potion.Potion;
+import net.minecraft.potion.Potions;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -40,5 +43,23 @@ public class PotionInit {
         VULNERABILITY_2_LONG = registerPotion("vulnerability_2_long", EffectInit.VULNERABILITY, 2925, 1);
         VULNERABILITY_3_LONG = registerPotion("vulnerability_3_long", EffectInit.VULNERABILITY, 1800, 2);
         VULNERABILITY_4_LONG = registerPotion("vulnerability_4_long", EffectInit.VULNERABILITY, 675, 3);
+
+        registerPotionRecipes();
+    }
+
+    private static void registerPotionRecipes() {
+        CoolIdeasMod.LOGGER.debug("Registering Potion Recipes for " + CoolIdeasMod.MODID);
+
+        //normal
+        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(Potions.WEAKNESS, Items.FERMENTED_SPIDER_EYE, VULNERABILITY);
+        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(VULNERABILITY, Items.SUSPICIOUS_STEW, VULNERABILITY_2);
+        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(VULNERABILITY_2, Items.SHULKER_SHELL, VULNERABILITY_3);
+        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(VULNERABILITY_3, Items.NETHER_STAR, VULNERABILITY_4);
+
+        //long
+        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(VULNERABILITY, Items.REDSTONE, VULNERABILITY_LONG);
+        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(VULNERABILITY_2, Items.REDSTONE, VULNERABILITY_2_LONG);
+        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(VULNERABILITY_3, Items.REDSTONE_BLOCK, VULNERABILITY_3_LONG);
+        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(VULNERABILITY_4, Items.REDSTONE_BLOCK, VULNERABILITY_4_LONG);
     }
 }

@@ -1,8 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "coolideas",
-  "version": "${version}",
-
+  "version": "1.0.0",
   "name": "Cool Ideas Mod",
   "description": "This is just some cool ideas i have that i put into this mod.",
   "authors": [
@@ -12,10 +11,8 @@
     "homepage": "https://thaddev.com/",
     "sources": "https://github.com/MyNameTsThad/CoolIdeasMod/tree/fabric-119"
   },
-
-  "license": "CC0-1.0",
+  "license": "MIT",
   "icon": "assets/coolideas/icon.png",
-
   "environment": "*",
   "entrypoints": {
     "main": [

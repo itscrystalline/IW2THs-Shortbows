@@ -6,8 +6,10 @@ import com.thaddev.coolideas.mechanics.inits.ConfiguredFeaturesInit;
 import com.thaddev.coolideas.mechanics.inits.EffectInit;
 import com.thaddev.coolideas.mechanics.inits.EntityTypeInit;
 import com.thaddev.coolideas.mechanics.inits.ItemInit;
+import com.thaddev.coolideas.mechanics.inits.LootTableModifierInit;
 import com.thaddev.coolideas.mechanics.inits.OreGenerationInit;
 import com.thaddev.coolideas.mechanics.inits.PotionInit;
+import com.thaddev.coolideas.mechanics.inits.RecipeSerializerInit;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.ModInitializer;
@@ -25,18 +27,20 @@ public class CoolIdeasMod implements ModInitializer {
 		instance = this;
 
 		Events.registerEvents();
-
 		ConfiguredFeaturesInit.registerConfiguredFeatures();
-		ItemInit.registerItems();
-		EntityTypeInit.registerEntityTypes();
+        ItemInit.registerItems();
+        LootTableModifierInit.modifyLootTables();
+        EntityTypeInit.registerEntityTypes();
 		BlockInit.registerBlocks();
 		OreGenerationInit.generateOres();
 		EffectInit.registerEffects();
-		PotionInit.registerPotions();
+        PotionInit.registerPotions();
+        RecipeSerializerInit.registerRecipes();
 	}
 
 	@Environment(value = EnvType.CLIENT)
 	public void printMessage(String message) {
-		client.printMessage(message);
-	}
+        if (client != null) client.printMessage(message);
+        else LOGGER.error("Cannot find Client! Is this world running on an integrated server?");
+    }
 }

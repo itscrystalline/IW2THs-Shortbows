@@ -42,6 +42,12 @@ public class MicrochipItem extends Item {
         }
     }
 
+    public static NbtCompound getType(MicrochipTypes type) {
+        NbtCompound compoundtag = new NbtCompound();
+        compoundtag.putInt("MicroChipType", type.getId());
+        return compoundtag;
+    }
+
     public enum MicrochipTypes {
         EMPTY(1, "(%$gray)Empty"),
         HOMING(2, "(%$green)Homing");
