@@ -5,7 +5,6 @@ import com.thaddev.coolideas.content.items.materials.MicrochipItem;
 import com.thaddev.coolideas.content.items.materials.SiliconPCBItem;
 import com.thaddev.coolideas.mechanics.inits.ItemInit;
 import com.thaddev.coolideas.mechanics.inits.RecipeSerializerInit;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -15,9 +14,8 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.item.crafting.UpgradeRecipe;
+import net.minecraftforge.registries.ForgeRegistryEntry;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Arrays;
 
 public class ApplySiliconPCBRecipe extends UpgradeRecipe {
     final Ingredient base;
@@ -54,7 +52,7 @@ public class ApplySiliconPCBRecipe extends UpgradeRecipe {
         return RecipeSerializerInit.APPLY_SILICON_PCB.get();
     }
 
-    public static class Serializer implements RecipeSerializer<ApplySiliconPCBRecipe> {
+    public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<ApplySiliconPCBRecipe> {
         @NotNull
         public ApplySiliconPCBRecipe fromJson(ResourceLocation resourceLocation, JsonObject json) {
             Ingredient ingredient = Ingredient.fromJson(GsonHelper.getAsJsonObject(json, "base"));

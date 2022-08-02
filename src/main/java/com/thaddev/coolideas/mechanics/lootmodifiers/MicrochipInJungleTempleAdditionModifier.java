@@ -1,22 +1,19 @@
 package com.thaddev.coolideas.mechanics.lootmodifiers;
 
-import com.google.common.base.Supplier;
-import com.google.common.base.Suppliers;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.gson.JsonObject;
 import com.thaddev.coolideas.content.items.materials.MicrochipItem;
 import com.thaddev.coolideas.mechanics.inits.ItemInit;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.IGlobalLootModifier;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+
 public class MicrochipInJungleTempleAdditionModifier extends LootModifier {
-    public static final Supplier<Codec<MicrochipInJungleTempleAdditionModifier>> CODEC = Suppliers.memoize(() ->
-        RecordCodecBuilder.create(inst -> codecStart(inst).apply(inst, MicrochipInJungleTempleAdditionModifier::new)));
 
     protected MicrochipInJungleTempleAdditionModifier(LootItemCondition[] conditionsIn) {
         super(conditionsIn);
@@ -24,8 +21,8 @@ public class MicrochipInJungleTempleAdditionModifier extends LootModifier {
 
     @Override
     @NotNull
-    protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
-        if (context.getRandom().nextFloat() <= 0.1){
+    protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
+        if (context.getRandom().nextFloat() <= 0.1) {
             ItemStack toAdd = new ItemStack(ItemInit.MICROCHIP.get(), 1);
             MicrochipItem.setType(toAdd, MicrochipItem.MicrochipTypes.HOMING);
             generatedLoot.add(toAdd);
@@ -33,8 +30,16 @@ public class MicrochipInJungleTempleAdditionModifier extends LootModifier {
         return generatedLoot;
     }
 
-    @Override
-    public Codec<? extends IGlobalLootModifier> codec() {
-        return CODEC.get();
+    public static class Serialzer extends GlobalLootModifierSerializer<MicrochipInJungleTempleAdditionModifier> {
+
+        @Override
+        public MicrochipInJungleTempleAdditionModifier read(ResourceLocation location, JsonObject object, LootItemCondition[] ailootcondition) {
+            return new MicrochipInJungleTempleAdditionModifier(ailootcondition);
+        }
+
+        @Override
+        public JsonObject write(MicrochipInJungleTempleAdditionModifier instance) {
+            return makeConditions(instance.conditions);
+        }
     }
 }

@@ -1,11 +1,8 @@
 package com.thaddev.coolideas.content.items.weapons;
 
-import com.thaddev.coolideas.content.entities.projectiles.DiamondHeadedArrow;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -27,22 +24,22 @@ public class TippedDiamondHeadedArrowItem extends DiamondHeadedArrowItem {
         return PotionUtils.setPotion(super.getDefaultInstance(), Potions.POISON);
     }
 
-    public void fillItemCategory(CreativeModeTab tab, NonNullList<ItemStack> stacks) {
-        for (Potion potion : Registry.POTION) {
-            if (potion.allowedInCreativeTab(this, tab, this.allowedIn(tab))) {
+    public void fillItemCategory(CreativeModeTab p_43356_, NonNullList<ItemStack> p_43357_) {
+        if (this.allowdedIn(p_43356_)) {
+            for (Potion potion : Registry.POTION) {
                 if (!potion.getEffects().isEmpty()) {
-                    stacks.add(PotionUtils.setPotion(new ItemStack(this), potion));
+                    p_43357_.add(PotionUtils.setPotion(new ItemStack(this), potion));
                 }
             }
         }
 
     }
 
-    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tag, TooltipFlag flags) {
-        PotionUtils.addPotionTooltip(stack, tag, 0.125F);
+    public void appendHoverText(ItemStack p_43359_, @Nullable Level p_43360_, List<Component> p_43361_, TooltipFlag p_43362_) {
+        PotionUtils.addPotionTooltip(p_43359_, p_43361_, 0.125F);
     }
 
-    public @NotNull String getDescriptionId(@NotNull ItemStack stack) {
-        return PotionUtils.getPotion(stack).getName(this.getDescriptionId() + ".effect.");
+    public @NotNull String getDescriptionId(ItemStack p_43364_) {
+        return PotionUtils.getPotion(p_43364_).getName(this.getDescriptionId() + ".effect.");
     }
 }

@@ -1,6 +1,5 @@
 package com.thaddev.coolideas.content.items.weapons;
 
-import com.thaddev.coolideas.CoolIdeasMod;
 import com.thaddev.coolideas.content.entities.projectiles.DiamondHeadedArrow;
 import com.thaddev.coolideas.content.entities.projectiles.ShortBowArrow;
 import com.thaddev.coolideas.mechanics.damagesources.RubberBandHitDamage;
@@ -14,7 +13,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -26,7 +24,6 @@ import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -36,9 +33,7 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Predicate;
 
 import static com.thaddev.coolideas.util.ColorUtils.component;
@@ -87,23 +82,20 @@ public class ShortBowBase extends BowItem {
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level world, @NotNull Player player, @NotNull InteractionHand hand) {
         if (player instanceof ServerPlayer) {
             ItemStack itemstack = player.getProjectile(player.getItemInHand(hand));
-            boolean inherit = EnchantmentHelper.getTagEnchantmentLevel(EnchantmentInit.INHERIT.get(), player.getItemInHand(hand)) > 0;
-            float precisionChance = EnchantmentHelper.getTagEnchantmentLevel(EnchantmentInit.PRECISION.get(), player.getItemInHand(hand)) == 1 ? (2f / 3f) :
-                    (EnchantmentHelper.getTagEnchantmentLevel(EnchantmentInit.PRECISION.get(), player.getItemInHand(hand)) == 2 ? 0.5f : 1f);
+            boolean inherit = EnchantmentHelper.getItemEnchantmentLevel(EnchantmentInit.INHERIT.get(), player.getItemInHand(hand)) > 0;
+            float precisionChance = EnchantmentHelper.getItemEnchantmentLevel(EnchantmentInit.PRECISION.get(), player.getItemInHand(hand)) == 1 ? (2f / 3f) :
+                (EnchantmentHelper.getItemEnchantmentLevel(EnchantmentInit.PRECISION.get(), player.getItemInHand(hand)) == 2 ? 0.5f : 1f);
             AttributeInstance attributeinstance = player.getAttribute(Attributes.ATTACK_DAMAGE);
             double strengthBoost = (attributeinstance != null && inherit ? attributeinstance.getValue() - attributeinstance.getBaseValue() : 0);
 
-            boolean flag = player.getAbilities().instabuild || (EnchantmentHelper.getTagEnchantmentLevel(Enchantments.INFINITY_ARROWS, player.getItemInHand(hand)) > 0 && itemstack.getCount() > 0);
+            boolean flag = player.getAbilities().instabuild || (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, player.getItemInHand(hand)) > 0 && itemstack.getCount() > 0);
             if (!itemstack.isEmpty() || flag) {
                 float rng = (float) Math.random();
                 if (rng <= (getRubberbandHitChance() * precisionChance) + ((strengthBoost / 2f) * 0.1f)) {
                     player.hurt(new RubberBandHitDamage(), (float) (getRubberbandHitDamage() + strengthBoost));
-                    if (strengthBoost > 0){
+                    if (strengthBoost > 0) {
                         PotionUtils.getPotion(itemstack).getEffects().forEach(effect -> {
                             if (effect.getEffect().isInstantenous()){
-//                                player.addEffect(new MobEffectInstance(effect.getEffect(), 1, (effect.getAmplifier() + 1) > 1 ?
-//                                        (int) Math.round(Math.floor(effect.getAmplifier() / 2f)) :
-//                                        effect.getAmplifier()));
                                 effect.getEffect().applyInstantenousEffect(null, player, player, (effect.getAmplifier() + 1) > 1 ?
                                         (int) Math.round(Math.floor(effect.getAmplifier() / 2f)) :
                                         effect.getAmplifier(), 1);
@@ -124,18 +116,18 @@ public class ShortBowBase extends BowItem {
 
     private void releaseUsing(ItemStack stack, Level world, LivingEntity entity) {
         if (entity instanceof Player player) {
-            boolean inherit = EnchantmentHelper.getTagEnchantmentLevel(EnchantmentInit.INHERIT.get(), stack) > 0;
-            boolean precision = EnchantmentHelper.getTagEnchantmentLevel(EnchantmentInit.PRECISION.get(), stack) > 0;
+            boolean inherit = EnchantmentHelper.getItemEnchantmentLevel(EnchantmentInit.INHERIT.get(), stack) > 0;
+            boolean precision = EnchantmentHelper.getItemEnchantmentLevel(EnchantmentInit.PRECISION.get(), stack) > 0;
             AttributeInstance attributeinstance = player.getAttribute(Attributes.ATTACK_DAMAGE);
             double strengthBoost = (attributeinstance != null ? attributeinstance.getValue() - attributeinstance.getBaseValue() : 0);
             float strengthLowDown = (((float) stack.getDamageValue() / stack.getMaxDamage()) / 4f * 3f);
             float chance = getCritChance();
 
-            if (EnchantmentHelper.getTagEnchantmentLevel(Enchantments.POWER_ARROWS, stack) > 0) {
-                chance += 0.05f * EnchantmentHelper.getTagEnchantmentLevel(Enchantments.POWER_ARROWS, stack);
+            if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.POWER_ARROWS, stack) > 0) {
+                chance += 0.05f * EnchantmentHelper.getItemEnchantmentLevel(Enchantments.POWER_ARROWS, stack);
             }
             ItemStack itemstack = player.getProjectile(stack);
-            boolean flag = player.getAbilities().instabuild || (EnchantmentHelper.getTagEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0 && itemstack.getCount() > 0);
+            boolean flag = player.getAbilities().instabuild || (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0 && itemstack.getCount() > 0);
 
             int i = this.getUseDuration(stack);
             i = net.minecraftforge.event.ForgeEventFactory.onArrowLoose(stack, world, player, i, !itemstack.isEmpty() || flag);
@@ -149,7 +141,7 @@ public class ShortBowBase extends BowItem {
                 float strength = 1f - strengthLowDown;
                 boolean crit = Math.random() < chance;
                 boolean flag1 = player.getAbilities().instabuild || (itemstack.getItem() instanceof ArrowItem && ((ArrowItem) itemstack.getItem()).isInfinite(itemstack, stack, player));
-                int multiShotArrows = (2 * (EnchantmentHelper.getTagEnchantmentLevel(Enchantments.MULTISHOT, stack) + 1)) - 1;
+                int multiShotArrows = (2 * (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MULTISHOT, stack) + 1)) - 1;
                 if (!world.isClientSide) {
                     ArrowItem arrowitem = (ArrowItem) (itemstack.getItem() instanceof ArrowItem ? itemstack.getItem() : Items.ARROW);
 

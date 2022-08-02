@@ -6,7 +6,6 @@ import com.thaddev.coolideas.mechanics.inits.ConfiguredFeaturesInit;
 import com.thaddev.coolideas.mechanics.inits.EffectInit;
 import com.thaddev.coolideas.mechanics.inits.EnchantmentInit;
 import com.thaddev.coolideas.mechanics.inits.EntityTypeInit;
-import com.thaddev.coolideas.mechanics.inits.GlobalLootModifierInit;
 import com.thaddev.coolideas.mechanics.inits.ItemInit;
 import com.thaddev.coolideas.mechanics.inits.PlacedFeaturesInit;
 import com.thaddev.coolideas.mechanics.inits.PotionInit;
@@ -41,7 +40,6 @@ public class CoolIdeasMod {
         BlockInit.BLOCKS.register(modEventBus);
         ConfiguredFeaturesInit.CONFIGURED_FEATURES.register(modEventBus);
         PlacedFeaturesInit.PLACED_FEATURES.register(modEventBus);
-        GlobalLootModifierInit.GLOBAL_LOOT_MODIFIERS.register(modEventBus);
         RecipeSerializerInit.RECIPES.register(modEventBus);
     }
 

@@ -19,9 +19,11 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.level.BlockEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = CoolIdeasMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Events {
@@ -33,7 +35,7 @@ public class Events {
             Level level = player.getLevel();
             BlockPos blockpos = event.getPos();
 
-            InteractionHand otherHand = event.getContext().getHand() == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
+            InteractionHand otherHand = Objects.requireNonNull(event.getContext()).getHand() == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
             if (player.getItemInHand(otherHand).getItem() == Items.GLASS_BOTTLE) {
                 ItemStack stack = player.getItemInHand(otherHand);
                 ItemStack newStack = new ItemStack(ItemInit.RAW_RUBBER_BOTTLE.get(), 1);
@@ -55,7 +57,7 @@ public class Events {
     @SubscribeEvent
     public static void onLivingHurt(final LivingHurtEvent event) {
         MobEffectInstance effect;
-        if ((effect = event.getEntity().getEffect(EffectInit.VULNERABILITY.get())) != null) {
+        if ((effect = event.getEntityLiving().getEffect(EffectInit.VULNERABILITY.get())) != null) {
             int amplifier = Math.min(effect.getAmplifier() + 1, 4);
             int toReduce = amplifier > 3 ? ((amplifier - 1) * 2) + 3 : amplifier * 2;
             event.getEntity().invulnerableTime = 20 - toReduce;

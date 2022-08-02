@@ -16,6 +16,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.item.crafting.UpgradeRecipe;
+import net.minecraftforge.registries.ForgeRegistryEntry;
 import org.jetbrains.annotations.NotNull;
 
 public class ApplyDiamondShortbowRecipe extends UpgradeRecipe {
@@ -56,7 +57,7 @@ public class ApplyDiamondShortbowRecipe extends UpgradeRecipe {
         return RecipeSerializerInit.APPLY_DIAMOND_SHORTBOW.get();
     }
 
-    public static class Serializer implements RecipeSerializer<ApplyDiamondShortbowRecipe> {
+    public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<ApplyDiamondShortbowRecipe> {
         @NotNull
         public ApplyDiamondShortbowRecipe fromJson(ResourceLocation resourceLocation, JsonObject json) {
             Ingredient ingredient = Ingredient.fromJson(GsonHelper.getAsJsonObject(json, "base"));

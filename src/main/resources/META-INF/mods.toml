@@ -1,6 +1,6 @@
-modLoader="javafml"
-loaderVersion="[41,)"
-license="All rights reserved"
+modLoader = "javafml"
+loaderVersion = "[40,)"
+license = "All rights reserved"
 
 [[mods]]
 modId = "coolideas"

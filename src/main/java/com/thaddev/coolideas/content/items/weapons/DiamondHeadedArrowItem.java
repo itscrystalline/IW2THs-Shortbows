@@ -25,7 +25,7 @@ public class DiamondHeadedArrowItem extends ArrowItem {
 
     @Override
     public boolean isInfinite(@NotNull ItemStack stack, @NotNull ItemStack bow, net.minecraft.world.entity.player.@NotNull Player player) {
-        int enchant = EnchantmentHelper.getTagEnchantmentLevel(Enchantments.INFINITY_ARROWS, bow);
+        int enchant = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, bow);
         return enchant > 0 && this.getClass() == DiamondHeadedArrowItem.class;
     }
 }
