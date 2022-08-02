@@ -5,6 +5,7 @@ import com.thaddev.coolideas.content.entities.projectiles.DiamondHeadedArrow;
 import com.thaddev.coolideas.content.entities.projectiles.ShortBowArrow;
 import com.thaddev.coolideas.mechanics.inits.EffectInit;
 import com.thaddev.coolideas.mechanics.inits.ItemInit;
+import com.thaddev.coolideas.mechanics.inits.TagsInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -27,13 +28,13 @@ public class Events {
     @SubscribeEvent
     public static void onPlayerStripAxe(final BlockEvent.BlockToolModificationEvent event) {
         if (!event.isSimulated() && event.getPlayer() instanceof ServerPlayer player
-                && event.getToolAction() == ToolActions.AXE_STRIP
-                && !event.getFinalState().getBlock().getDescriptionId().contains("stripped")){
+            && event.getToolAction() == ToolActions.AXE_STRIP
+            && event.getState().is(TagsInit.REGULAR_LOGS)) {
             Level level = player.getLevel();
             BlockPos blockpos = event.getPos();
 
             InteractionHand otherHand = event.getContext().getHand() == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
-            if (player.getItemInHand(otherHand).getItem() == Items.GLASS_BOTTLE){
+            if (player.getItemInHand(otherHand).getItem() == Items.GLASS_BOTTLE) {
                 ItemStack stack = player.getItemInHand(otherHand);
                 ItemStack newStack = new ItemStack(ItemInit.RAW_RUBBER_BOTTLE.get(), 1);
                 stack.shrink(1);

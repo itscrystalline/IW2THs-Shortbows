@@ -4,7 +4,7 @@ license="All rights reserved"
 
 [[mods]]
 modId = "coolideas"
-version = "1.0.4" #mandatory
+version = "1.0.5" #mandatory
 displayName = "Cool Ideas Mod" #mandatory
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
 displayURL = "https://github.com/MyNameTsThad/CoolIdeasMod" #optional
