@@ -23,6 +23,6 @@ public class EnchantmentInit {
     }
 
     public static void registerEnchantments() {
-        CoolIdeasMod.LOGGER.debug("Registering Enchantments for " + CoolIdeasMod.MODID);
+        CoolIdeasMod.LOGGER.debug("Registering Enchantments for " + CoolIdeasMod.MODID + " (6/11)");
     }
 }

@@ -32,7 +32,7 @@ public class PotionInit {
     }
 
     public static void registerPotions() {
-        CoolIdeasMod.LOGGER.debug("Registering Potions for " + CoolIdeasMod.MODID);
+        CoolIdeasMod.LOGGER.debug("Registering Potions for " + CoolIdeasMod.MODID + " (10/11)");
 
         VULNERABILITY = registerPotion("vulnerability", EffectInit.VULNERABILITY, 2700, 0);
         VULNERABILITY_2 = registerPotion("vulnerability_2", EffectInit.VULNERABILITY, 1950, 1);
@@ -48,7 +48,7 @@ public class PotionInit {
     }
 
     private static void registerPotionRecipes() {
-        CoolIdeasMod.LOGGER.debug("Registering Potion Recipes for " + CoolIdeasMod.MODID);
+        CoolIdeasMod.LOGGER.debug("Registering Potion Recipes for " + CoolIdeasMod.MODID + " (10/11)");
 
         //normal
         BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(Potions.WEAKNESS, Items.FERMENTED_SPIDER_EYE, VULNERABILITY);

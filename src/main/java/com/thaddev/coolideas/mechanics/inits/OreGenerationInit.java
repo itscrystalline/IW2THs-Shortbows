@@ -8,7 +8,7 @@ import net.minecraft.world.gen.GenerationStep;
 
 public class OreGenerationInit {
     public static void generateOres() {
-        CoolIdeasMod.LOGGER.debug("Adding Ore Generations for " + CoolIdeasMod.MODID);
+        CoolIdeasMod.LOGGER.debug("Adding Ore Generations for " + CoolIdeasMod.MODID + " (8/11)");
         BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(),
             GenerationStep.Feature.UNDERGROUND_ORES, PlacedFeatures.SILICON_ORE_PLACED.getKey().get()
         );

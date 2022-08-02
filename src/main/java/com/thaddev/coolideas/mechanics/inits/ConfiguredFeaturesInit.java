@@ -19,6 +19,6 @@ public class ConfiguredFeaturesInit {
         Feature.ORE, new OreFeatureConfig(NETHER_SILICON_ORES, 4));
 
     public static void registerConfiguredFeatures() {
-        CoolIdeasMod.LOGGER.debug("Registering Configured Features for " + CoolIdeasMod.MODID);
+        CoolIdeasMod.LOGGER.debug("Registering Configured Features for " + CoolIdeasMod.MODID + " (2/11)");
     }
 }

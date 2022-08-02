@@ -36,6 +36,6 @@ public class BlockInit {
     }
 
     public static void registerBlocks() {
-        CoolIdeasMod.LOGGER.debug("Registering Blocks for " + CoolIdeasMod.MODID);
+        CoolIdeasMod.LOGGER.debug("Registering Blocks for " + CoolIdeasMod.MODID + " (7/11)");
     }
 }

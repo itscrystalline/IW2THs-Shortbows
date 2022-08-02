@@ -24,7 +24,7 @@ public class RecipeSerializerInit {
     );
 
     public static void registerRecipes() {
-        CoolIdeasMod.LOGGER.debug("Registering Recipes for " + CoolIdeasMod.MODID);
+        CoolIdeasMod.LOGGER.debug("Registering Recipes for " + CoolIdeasMod.MODID + " (11/11)");
     }
 
     public static <S extends RecipeSerializer<T>, T extends Recipe<?>> S registerRecipeSerializer(Identifier name, S serializer) {

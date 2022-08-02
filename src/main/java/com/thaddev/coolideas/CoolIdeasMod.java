@@ -11,13 +11,12 @@ import com.thaddev.coolideas.mechanics.inits.LootTableModifierInit;
 import com.thaddev.coolideas.mechanics.inits.OreGenerationInit;
 import com.thaddev.coolideas.mechanics.inits.PotionInit;
 import com.thaddev.coolideas.mechanics.inits.RecipeSerializerInit;
+import com.thaddev.coolideas.util.CustomLogger;
 import net.fabricmc.api.ModInitializer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class CoolIdeasMod implements ModInitializer {
 	public static final String MODID = "coolideas";
-	public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
+	public static final CustomLogger LOGGER = new CustomLogger(MODID);
 	public static CoolIdeasMod instance;
 	public static CoolIdeasModClient client;
 

@@ -93,6 +93,6 @@ public class ItemInit {
 
 
     public static void registerItems() {
-        CoolIdeasMod.LOGGER.debug("Registering Items for " + CoolIdeasMod.MODID);
+        CoolIdeasMod.LOGGER.debug("Registering Items for " + CoolIdeasMod.MODID + " (3/11)");
     }
 }

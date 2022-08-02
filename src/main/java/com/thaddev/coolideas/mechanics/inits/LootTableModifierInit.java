@@ -1,5 +1,6 @@
 package com.thaddev.coolideas.mechanics.inits;
 
+import com.thaddev.coolideas.CoolIdeasMod;
 import com.thaddev.coolideas.content.items.materials.MicrochipItem;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.minecraft.loot.LootPool;
@@ -21,6 +22,7 @@ public class LootTableModifierInit {
     private static final Identifier BASTION_OTHER = new Identifier("minecraft", "chests/bastion_other");
 
     public static void modifyLootTables() {
+        CoolIdeasMod.LOGGER.debug("Modifying Loot tables for " + CoolIdeasMod.MODID + " (4/11)");
         LootTableEvents.MODIFY.register(((resourceManager, lootManager, id, tableBuilder, source) -> {
             if (DUNGEON_CHEST.equals(id) || JUNGLE_TEMPLE.equals(id) || DESERT_TEMPLE.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()

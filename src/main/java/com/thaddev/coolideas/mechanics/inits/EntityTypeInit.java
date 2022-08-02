@@ -21,6 +21,6 @@ public class EntityTypeInit {
     );
 
     public static void registerEntityTypes() {
-        CoolIdeasMod.LOGGER.debug("Registering Entity Types for " + CoolIdeasMod.MODID);
+        CoolIdeasMod.LOGGER.debug("Registering Entity Types for " + CoolIdeasMod.MODID + " (5/11)");
     }
 }

@@ -19,7 +19,7 @@ public class EffectInit {
     }
 
     public static void registerEffects() {
-        CoolIdeasMod.LOGGER.debug("Registering Effects for " + CoolIdeasMod.MODID);
+        CoolIdeasMod.LOGGER.debug("Registering Effects for " + CoolIdeasMod.MODID + " (9/11)");
         VULNERABILITY = registerStatusEffect("vulnerability");
     }
 }
