@@ -2,12 +2,10 @@ package com.thaddev.coolideas;
 
 import com.mojang.logging.LogUtils;
 import com.thaddev.coolideas.mechanics.inits.BlockInit;
-import com.thaddev.coolideas.mechanics.inits.ConfiguredFeaturesInit;
 import com.thaddev.coolideas.mechanics.inits.EffectInit;
 import com.thaddev.coolideas.mechanics.inits.EnchantmentInit;
 import com.thaddev.coolideas.mechanics.inits.EntityTypeInit;
 import com.thaddev.coolideas.mechanics.inits.ItemInit;
-import com.thaddev.coolideas.mechanics.inits.PlacedFeaturesInit;
 import com.thaddev.coolideas.mechanics.inits.PotionInit;
 import com.thaddev.coolideas.mechanics.inits.PotionRecipeInit;
 import com.thaddev.coolideas.mechanics.inits.RecipeSerializerInit;
@@ -38,8 +36,6 @@ public class CoolIdeasMod {
         EffectInit.MOB_EFFECTS.register(modEventBus);
         PotionInit.POTIONS.register(modEventBus);
         BlockInit.BLOCKS.register(modEventBus);
-        ConfiguredFeaturesInit.CONFIGURED_FEATURES.register(modEventBus);
-        PlacedFeaturesInit.PLACED_FEATURES.register(modEventBus);
         RecipeSerializerInit.RECIPES.register(modEventBus);
     }
 

@@ -5,6 +5,7 @@ import com.thaddev.coolideas.content.entities.projectiles.DiamondHeadedArrow;
 import com.thaddev.coolideas.content.entities.projectiles.ShortBowArrow;
 import com.thaddev.coolideas.mechanics.inits.EffectInit;
 import com.thaddev.coolideas.mechanics.inits.ItemInit;
+import com.thaddev.coolideas.mechanics.inits.OreGeneration;
 import com.thaddev.coolideas.mechanics.inits.TagsInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -19,6 +20,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -65,5 +67,10 @@ public class Events {
         if ((event.getSource().getDirectEntity() instanceof DiamondHeadedArrow | event.getSource().getDirectEntity() instanceof ShortBowArrow) && event.getSource().getEntity() instanceof Player player) {
             player.level.playSound(null, player.position().x, player.position().y, player.position().z, SoundEvents.ARROW_HIT_PLAYER, SoundSource.PLAYERS, 0.3F, 0.5F);
         }
+    }
+
+    @SubscribeEvent
+    public static void onBiomeLoad(final BiomeLoadingEvent event) {
+        OreGeneration.generateOres(event);
     }
 }
