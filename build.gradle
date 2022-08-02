@@ -16,7 +16,7 @@ plugins {
 
 apply plugin: 'org.spongepowered.mixin'
 
-version = '1.0.3-patch3'
+version = '1.0.4'
 group = 'com.thaddev.coolideas' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'coolideas'
 

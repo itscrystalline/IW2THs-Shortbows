@@ -347,7 +347,13 @@ public class DiamondHeadedArrow extends AbstractArrow {
                         }
                     } else if (entity instanceof Player player) {
                         if (!player.getUUID().equals(Objects.requireNonNull(this.getOwner()).getUUID()) && !player.isCreative() && !player.isSpectator()) {
-                            targetList.add(entity);
+                            if (this.getOwner() instanceof Player owner) {
+                                if (owner.canHarmPlayer(player)) {
+                                    targetList.add(entity);
+                                }
+                            } else {
+                                targetList.add(entity);
+                            }
                         }
                     }
 

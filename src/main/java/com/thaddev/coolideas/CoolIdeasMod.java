@@ -13,14 +13,6 @@ import com.thaddev.coolideas.mechanics.inits.PotionInit;
 import com.thaddev.coolideas.mechanics.inits.PotionRecipeInit;
 import com.thaddev.coolideas.mechanics.inits.RecipeSerializerInit;
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -51,17 +43,9 @@ public class CoolIdeasMod {
         PlacedFeaturesInit.PLACED_FEATURES.register(modEventBus);
         GlobalLootModifierInit.GLOBAL_LOOT_MODIFIERS.register(modEventBus);
         RecipeSerializerInit.RECIPES.register(modEventBus);
-
-        mc = Minecraft.getInstance();
     }
 
     public void setup(final FMLCommonSetupEvent event) {
         event.enqueueWork(PotionRecipeInit::register);
-    }
-
-    public void printMessage(String message) {
-        if (mc != null) {
-            mc.gui.getChat().addMessage(Component.nullToEmpty(message));
-        }
     }
 }
