@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "forge-119" branch
   push:
-    branches: [ "fabric-119" ]
+    branches: [ "fabric-1182" ]
   pull_request:
-    branches: [ "fabric-119" ]
+    branches: [ "fabric-1182" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -21,23 +21,23 @@ jobs:
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-java@v3
-        with:
-          distribution: temurin
-          java-version: 17
+#     steps:
+#       - uses: actions/checkout@v3
+#       - uses: actions/setup-java@v3
+#         with:
+#           distribution: temurin
+#           java-version: 17
 
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+#       - name: Setup Gradle
+#         uses: gradle/gradle-build-action@v2
 
-      - name: Execute Gradle build
-        run: ./gradlew build
+#       - name: Execute Gradle build
+#         run: ./gradlew build
 
-      - name: Rename JAR
-        run: cd build/libs && find . -name 'coolideas-*.jar' -type f -exec bash -c 'mv "$1" "${1/\/coolideas-/\/CoolIdeasMod-fabric-}"' -- {} \;
+#       - name: Rename JAR
+#         run: cd build/libs && find . -name 'coolideas-*.jar' -type f -exec bash -c 'mv "$1" "${1/\/coolideas-/\/CoolIdeasMod-fabric-}"' -- {} \;
 
-      - name: Publish to Github Releases
-        uses: Kir-Antipov/mc-publish@v3.1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Publish to Github Releases
+#         uses: Kir-Antipov/mc-publish@v3.1
+#         with:
+#           github-token: ${{ secrets.GITHUB_TOKEN }}
