@@ -15,7 +15,7 @@ public class EffectInit {
         return Registry.register(
             Registry.STATUS_EFFECT,
             new Identifier(CoolIdeasMod.MODID, name),
-            new VulnerabilityEffect(StatusEffectCategory.HARMFUL, ColorUtils.rgbToInteger(10, 0, 0)));
+            new VulnerabilityEffect(StatusEffectCategory.HARMFUL, ColorUtils.rgbToInteger(50, 0, 0)));
     }
 
     public static void registerEffects() {
