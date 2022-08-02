@@ -314,7 +314,13 @@ public class DiamondHeadedArrow extends PersistentProjectileEntity {
                         }
                     } else if (entity instanceof PlayerEntity player) {
                         if (!player.getUuid().equals(Objects.requireNonNull(this.getOwner()).getUuid()) && !player.isCreative() && !player.isSpectator()) {
-                            targetList.add(entity);
+                            if (this.getOwner() instanceof PlayerEntity owner) {
+                                if (owner.shouldDamagePlayer(player)) {
+                                    targetList.add(entity);
+                                }
+                            } else {
+                                targetList.add(entity);
+                            }
                         }
                     }
 
