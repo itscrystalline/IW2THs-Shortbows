@@ -18,3 +18,5 @@ Github releases: Right [Here](https://github.com/MyNameTsThad/IW2THs-Shortbows/r
 
 ## Developing
 This project requires [JDK 17](https://adoptium.net/).
+
+Make sure you are on the right branch! Each version of the mod for each game version and modloader are in seperate branches, this one is `Forge 1.19`.
