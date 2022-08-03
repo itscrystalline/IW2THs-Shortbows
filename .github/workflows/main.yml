@@ -43,6 +43,8 @@ jobs:
       - name: Publish to Github Releases
         uses: Kir-Antipov/mc-publish@v3.1
         with:
+          loaders: fabric
+          game-versions: 1.18.2
           github-token: ${{ secrets.GITHUB_TOKEN }}
           curseforge-id: 654495
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
