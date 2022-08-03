@@ -1,7 +1,7 @@
 package com.thaddev.coolideas.content.enchantments;
 
-import com.thaddev.coolideas.content.items.weapons.ShortBowBase;
-import jdk.jfr.Percentage;
+import com.thaddev.coolideas.content.items.weapons.DiamondShortBowItem;
+import com.thaddev.coolideas.content.items.weapons.IronShortBowItem;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -35,6 +35,6 @@ public class PrecisionEnchantment extends Enchantment {
 
     @Override
     public boolean canEnchant(ItemStack stack) {
-        return stack.getItem() instanceof ShortBowBase;
+        return stack.getItem() instanceof IronShortBowItem || stack.getItem() instanceof DiamondShortBowItem;
     }
 }

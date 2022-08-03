@@ -50,6 +50,7 @@ public class DiamondHeadedArrow extends AbstractArrow {
     private boolean shotByShortbow;
 
     private boolean isHoming;
+    private boolean hasHitTarget;
     LivingEntity target;
 
     public DiamondHeadedArrow(EntityType<? extends AbstractArrow> type, Level world) {
@@ -149,10 +150,10 @@ public class DiamondHeadedArrow extends AbstractArrow {
 
     public void tick() {
         super.tick();
-        if (inGroundTime > 20 && this.shotByShortbow) {
+        if (inGroundTime > 20 && this.shotByShortbow && this.pickup == AbstractArrow.Pickup.CREATIVE_ONLY) {
             this.discard();
         }
-        if (this.isHoming() && (!this.inGround || this.inGroundTime <= 10)) {
+        if (this.isHoming() && (!this.inGround || this.inGroundTime <= 10) && !this.hasHitTarget) {
             this.setTarget();
             if (target != null && target.isAlive()) {
                 float i = 5f;
@@ -308,7 +309,7 @@ public class DiamondHeadedArrow extends AbstractArrow {
     protected void onHitEntity(@NotNull EntityHitResult result) {
         super.onHitEntity(result);
         if (this.target != null && result.getEntity().getUUID().equals(this.target.getUUID())) {
-            this.discard();
+            this.hasHitTarget = true;
         }
     }
 
