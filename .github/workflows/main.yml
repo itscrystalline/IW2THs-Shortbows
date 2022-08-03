@@ -34,8 +34,11 @@ jobs:
       - name: Execute Gradle build
         run: ./gradlew build
 
+      - name: Delete Sources JAR
+        run: cd build/libs && rm *-sources.jar
+
       - name: Rename JAR
-        run: cd build/libs && find . -name 'coolideas-*.jar' -type f -exec bash -c 'mv "$1" "${1/\/coolideas-/\/CoolIdeasMod-fabric-119-}"' -- {} \;
+        run: find . -name 'coolideas-*.jar' -type f -exec bash -c 'mv "$1" "${1/\/coolideas-/\/CoolIdeasMod-fabric-119-}"' -- {} \;
 
       - name: Publish to Github Releases
         uses: Kir-Antipov/mc-publish@v3.1
