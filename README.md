@@ -10,7 +10,7 @@ Explore throughout the world to find things that will make your fast new weapon,
 
 ## Downloads
 
-Curseforge: *Coming Soon*
+Curseforge: https://www.curseforge.com/minecraft/mc-mods/iwant2tryhards-shortbows
 
 Modrinth: *Coming Soon*
 
