@@ -1,5 +1,6 @@
 package com.thaddev.coolideas.content.items.weapons;
 
+import com.thaddev.coolideas.mechanics.inits.ItemInit;
 import com.thaddev.coolideas.util.ColorUtils;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.ItemStack;
@@ -53,15 +54,10 @@ public class IronShortBowItem extends ShortBowBase {
         return 20;
     }
 
-//    @Override
-//    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-//        return (enchantment == Enchantments.MULTISHOT) || super.canApplyAtEnchantingTable(stack, enchantment);
-//    }
-
     @Override
     public boolean canRepair(ItemStack thisItem, ItemStack repairItem) {
-        return /*repairItem.getItem() == ItemInit.IRON_ROD.get() || repairItem.getItem() == ItemInit.LATEX_BAND.get()
-                || repairItem.getItem() == ItemInit.RUBBER_BAND.get() || */super.canRepair(thisItem, repairItem);
+        return repairItem.getItem() == ItemInit.IRON_ROD || repairItem.getItem() == ItemInit.LATEX_BAND
+            || repairItem.getItem() == ItemInit.RUBBER_BAND || super.canRepair(thisItem, repairItem);
     }
 
     @Override

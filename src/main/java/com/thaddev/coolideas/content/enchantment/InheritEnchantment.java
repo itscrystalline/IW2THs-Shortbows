@@ -1,6 +1,7 @@
 package com.thaddev.coolideas.content.enchantment;
 
-import com.thaddev.coolideas.content.items.weapons.ShortBowBase;
+import com.thaddev.coolideas.content.items.weapons.DiamondShortBowItem;
+import com.thaddev.coolideas.content.items.weapons.IronShortBowItem;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
@@ -34,6 +35,6 @@ public class InheritEnchantment extends Enchantment {
 
     @Override
     public boolean isAcceptableItem(ItemStack stack) {
-        return stack.getItem() instanceof ShortBowBase;
+        return stack.getItem() instanceof IronShortBowItem || stack.getItem() instanceof DiamondShortBowItem;
     }
 }

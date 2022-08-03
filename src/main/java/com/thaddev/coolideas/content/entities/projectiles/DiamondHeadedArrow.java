@@ -50,6 +50,7 @@ public class DiamondHeadedArrow extends PersistentProjectileEntity {
     private boolean shotByShortbow;
 
     private boolean isHoming;
+    private boolean hasHitTarget;
     LivingEntity target;
 
     public DiamondHeadedArrow(EntityType<? extends DiamondHeadedArrow> entityType, World world) {
@@ -147,7 +148,7 @@ public class DiamondHeadedArrow extends PersistentProjectileEntity {
     @Override
     public void tick() {
         super.tick();
-        if (inGroundTime > 20 && this.shotByShortbow) {
+        if (inGroundTime > 20 && this.shotByShortbow && !this.hasHitTarget && this.pickupType == PickupPermission.CREATIVE_ONLY) {
             this.discard();
         }
         if (this.isHoming() && (!this.inGround || this.inGroundTime <= 10)) {
@@ -215,6 +216,12 @@ public class DiamondHeadedArrow extends PersistentProjectileEntity {
         if (this.colorSet) {
             nbt.putInt("Color", this.getColor());
         }
+        if (this.shotByShortbow) {
+            nbt.putBoolean("ShotByShortbow", this.getShotByShortbow());
+        }
+        if (this.isHoming) {
+            nbt.putBoolean("IsHoming", this.isHoming());
+        }
         if (!this.effects.isEmpty()) {
             NbtList nbtList = new NbtList();
             for (StatusEffectInstance statusEffectInstance : this.effects) {
@@ -237,6 +244,17 @@ public class DiamondHeadedArrow extends PersistentProjectileEntity {
             this.setColor(nbt.getInt("Color"));
         } else {
             this.initColor();
+        }
+        if (nbt.contains("IsHoming", NbtElement.NUMBER_TYPE)) {
+            this.setHoming(nbt.getBoolean("IsHoming"));
+        } else {
+            this.setHoming(false);
+        }
+
+        if (nbt.contains("ShotByShortbow", NbtElement.NUMBER_TYPE)) {
+            this.setShotByShortbow(nbt.getBoolean("ShotByShortbow"));
+        } else {
+            this.setShotByShortbow(false);
         }
     }
 
@@ -275,7 +293,7 @@ public class DiamondHeadedArrow extends PersistentProjectileEntity {
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
         if (this.target != null && entityHitResult.getEntity().getUuid().equals(this.target.getUuid())) {
-            this.discard();
+            this.hasHitTarget = true;
         }
     }
 
