@@ -11,7 +11,7 @@ public class ShortBowArrow extends Arrow {
 
     @Override
     public void tick() {
-        if (inGroundTime > 20){
+        if (inGroundTime > 20 && this.pickup == Pickup.CREATIVE_ONLY) {
             this.discard();
         }
         super.tick();
