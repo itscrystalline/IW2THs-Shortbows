@@ -42,3 +42,5 @@ jobs:
         uses: Kir-Antipov/mc-publish@v3.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          curseforge-id: 654495
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
