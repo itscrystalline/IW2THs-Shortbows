@@ -216,6 +216,12 @@ public class DiamondHeadedArrow extends PersistentProjectileEntity {
         if (this.colorSet) {
             nbt.putInt("Color", this.getColor());
         }
+        if (this.shotByShortbow) {
+            nbt.putBoolean("ShotByShortbow", this.getShotByShortbow());
+        }
+        if (this.isHoming) {
+            nbt.putBoolean("IsHoming", this.isHoming());
+        }
         if (!this.effects.isEmpty()) {
             NbtList nbtList = new NbtList();
             for (StatusEffectInstance statusEffectInstance : this.effects) {
@@ -238,6 +244,17 @@ public class DiamondHeadedArrow extends PersistentProjectileEntity {
             this.setColor(nbt.getInt("Color"));
         } else {
             this.initColor();
+        }
+        if (nbt.contains("IsHoming", NbtElement.NUMBER_TYPE)) {
+            this.setHoming(nbt.getBoolean("IsHoming"));
+        } else {
+            this.setHoming(false);
+        }
+
+        if (nbt.contains("ShotByShortbow", NbtElement.NUMBER_TYPE)) {
+            this.setShotByShortbow(nbt.getBoolean("ShotByShortbow"));
+        } else {
+            this.setShotByShortbow(false);
         }
     }
 
