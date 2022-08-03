@@ -1,12 +1,12 @@
 {
   "replace": false,
   "entries": [
-    "coolideas:microchip_in_dungeon",
-    "coolideas:microchip_in_desert_temple",
-    "coolideas:microchip_in_jungle_temple",
-    "coolideas:microchip_in_bastion_bridge",
-    "coolideas:microchip_in_bastion_hoglin_stable",
-    "coolideas:microchip_in_bastion_other",
-    "coolideas:microchip_in_bastion_treasure"
+    "iw2thshortbows:microchip_in_dungeon",
+    "iw2thshortbows:microchip_in_desert_temple",
+    "iw2thshortbows:microchip_in_jungle_temple",
+    "iw2thshortbows:microchip_in_bastion_bridge",
+    "iw2thshortbows:microchip_in_bastion_hoglin_stable",
+    "iw2thshortbows:microchip_in_bastion_other",
+    "iw2thshortbows:microchip_in_bastion_treasure"
   ]
 }

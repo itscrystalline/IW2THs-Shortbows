@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "iw2thshortbows:blocks/silicon_ore"
+  }
+}

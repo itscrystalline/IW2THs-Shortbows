@@ -1,0 +1,12 @@
+{
+  "type": "iw2thshortbows:smithing_special_apply_diamond_shortbow",
+  "addition": {
+    "item": "iw2thshortbows:silicon_pcb"
+  },
+  "base": {
+    "item": "iw2thshortbows:diamond_shortbow"
+  },
+  "result": {
+    "item": "iw2thshortbows:diamond_shortbow"
+  }
+}

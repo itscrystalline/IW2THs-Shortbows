@@ -1,0 +1,10 @@
+{
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/desert_pyramid"
+    }
+  ],
+  "addition": "iw2thshortbows:microchip",
+  "type": "iw2thshortbows:microchip_in_desert_temple"
+}

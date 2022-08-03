@@ -1,18 +1,18 @@
 modLoader="javafml"
 loaderVersion="[41,)"
-license="All rights reserved"
+license="MIT"
 
 [[mods]]
-modId = "coolideas"
-version = "1.7.1" #mandatory
-displayName = "Cool Ideas Mod" #mandatory
+modId = "iw2thshortbows"
+version = "1.0.0" #mandatory
+displayName = "IWant2TryHard's Shortbows" #mandatory
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
-displayURL = "https://github.com/MyNameTsThad/CoolIdeasMod" #optional
-logoFile = "coolideas.png" #optional
+displayURL = "https://github.com/MyNameTsThad/IW2THs-Shortbows" #optional
+logoFile = "iw2thshortbows.png" #optional
 credits = "ThadDev (IWant2TryHard)" #optional
 authors = "ThadDev (IWant2TryHard)" #optional
 #displayTest="MATCH_VERSION" # MATCH_VERSION is the default if nothing is specified (#optional)
 
 description = '''
-This is just some cool ideas i have that i put into this mod.
+A mod that adds, well, shortbows! Shoot your foes with high speed! (And in style. Sort of.)
 '''

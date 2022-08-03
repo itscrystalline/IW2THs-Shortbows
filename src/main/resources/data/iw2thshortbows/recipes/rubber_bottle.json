@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "iw2thshortbows:raw_rubber_bottle"
+  },
+  "result": "iw2thshortbows:rubber_bottle",
+  "experience": 0.5,
+  "cookingtime": 200
+}

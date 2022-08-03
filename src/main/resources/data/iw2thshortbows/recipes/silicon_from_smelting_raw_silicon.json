@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "group": "silicon",
+  "ingredient": {
+    "item": "iw2thshortbows:raw_silicon"
+  },
+  "result": "iw2thshortbows:silicon",
+  "experience": 0.3,
+  "cookingtime": 250
+}

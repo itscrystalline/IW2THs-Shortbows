@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "#",
+    "Y"
+  ],
+  "key": {
+    "#": {
+      "item": "iw2thshortbows:iron_rod"
+    },
+    "X": {
+      "item": "iw2thshortbows:diamond_arrow_head"
+    },
+    "Y": {
+      "item": "minecraft:feather"
+    }
+  },
+  "result": {
+    "item": "iw2thshortbows:diamond_headed_arrow",
+    "count": 4
+  }
+}
