@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#N#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "iw2thshortbows:silicon"
+    },
+    "N": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "result": {
+    "item": "iw2thshortbows:silicon_pcb"
+  }
+}

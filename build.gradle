@@ -19,8 +19,8 @@ plugins {
 apply plugin: 'org.spongepowered.mixin'
 
 version = '1.7.1'
-group = 'com.thaddev.coolideas' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'coolideas'
+group = 'com.thaddev.iw2thshortbows' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'iw2thshortbows'
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -35,10 +35,10 @@ minecraft {
         client {
             workingDirectory project.file('run')
             property 'forge.enabledGameTestNamespaces', archivesBaseName
-            arg '-mixin.config=mixins.coolideas.json'
+            arg '-mixin.config=mixins.iw2thshortbows.json'
             
             mods {
-                coolideas {
+                iw2thshortbows {
                     source sourceSets.main
                 }
             }
@@ -49,7 +49,7 @@ minecraft {
             property 'forge.enabledGameTestNamespaces', archivesBaseName
 
             mods {
-                coolideas {
+                iw2thshortbows {
                     source sourceSets.main
                 }
             }
@@ -63,7 +63,7 @@ minecraft {
             property 'forge.enabledGameTestNamespaces', archivesBaseName
 
             mods {
-                coolideas {
+                iw2thshortbows {
                     source sourceSets.main
                 }
             }
@@ -75,7 +75,7 @@ minecraft {
             args '--mod', archivesBaseName, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                coolideas {
+                iw2thshortbows {
                     source sourceSets.main
                 }
             }
@@ -97,7 +97,7 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "coolideas",
+                "Specification-Title"     : "iw2thshortbows",
                 "Specification-Vendor"    : "thaddev",
                 "Specification-Version"   : "1",
                 "Implementation-Title"    : project.name,
@@ -105,20 +105,20 @@ jar {
                 "Implementation-Vendor"   : "thaddev",
                 "TweakClass"              : "org.spongepowered.asm.launch.MixinTweaker",
                 "TweakOrder"              : 0,
-                "MixinConfigs"            : "coolideas.mixin.json",
+                "MixinConfigs"            : "iw2thshortbows.mixin.json",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
 
-    rename 'mixin.refmap.json', 'coolideas.mixin-refmap.json'
+    rename 'mixin.refmap.json', 'iw2thshortbows.mixin-refmap.json'
 }
 
 jar.finalizedBy('reobfJar')
 
 mixin {
     // MixinGradle Settings
-    add sourceSets.main, 'coolideas.mixin-refmap.json'
-    config 'mixins.coolideas.json'
+    add sourceSets.main, 'iw2thshortbows.mixin-refmap.json'
+    config 'mixins.iw2thshortbows.json'
 }
 
 publishing {

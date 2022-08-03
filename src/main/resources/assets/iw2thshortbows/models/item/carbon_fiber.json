@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "iw2thshortbows:items/carbon_fiber"
+  }
+}

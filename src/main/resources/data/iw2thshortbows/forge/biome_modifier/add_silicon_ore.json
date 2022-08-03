@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_nether",
+  "features": "iw2thshortbows:silicon_ore_placed",
+  "step": "underground_ores"
+}

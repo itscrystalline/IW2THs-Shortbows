@@ -1,0 +1,12 @@
+{
+  "type": "iw2thshortbows:smithing_special_apply_silicon_pcb",
+  "addition": {
+    "item": "iw2thshortbows:microchip"
+  },
+  "base": {
+    "item": "iw2thshortbows:silicon_pcb"
+  },
+  "result": {
+    "item": "iw2thshortbows:silicon_pcb"
+  }
+}
