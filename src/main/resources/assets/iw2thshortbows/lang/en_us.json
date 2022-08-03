@@ -1,0 +1,34 @@
+{
+  "item.iw2thshortbows.wooden_shortbow": "Wooden Shortbow",
+  "item.iw2thshortbows.iron_shortbow": "Iron Shortbow",
+  "item.iw2thshortbows.diamond_shortbow": "Diamond Shortbow",
+  "item.iw2thshortbows.raw_rubber_bottle": "Raw Rubber Bottle",
+  "item.iw2thshortbows.rubber_bottle": "Rubber Bottle",
+  "item.iw2thshortbows.rubber_band": "Rubber Band",
+  "item.iw2thshortbows.latex_band": "Latex Band",
+  "item.iw2thshortbows.carbon_fiber": "Carbon Fiber",
+  "item.iw2thshortbows.iron_rod": "Iron Rod",
+  "item.iw2thshortbows.diamond_rod": "Diamond Rod",
+  "item.iw2thshortbows.diamond_arrow_head": "Diamond Arrow Head",
+  "item.iw2thshortbows.diamond_headed_arrow": "Diamond Headed Arrow",
+  "item.iw2thshortbows.tipped_diamond_headed_arrow": "Tipped Diamond Headed Arrow",
+  "item.iw2thshortbows.spider_web": "Spider Web",
+  "item.iw2thshortbows.tweezers": "Tweezers",
+  "item.iw2thshortbows.silicon": "Silicon",
+  "item.iw2thshortbows.raw_silicon": "Raw Silicon",
+  "item.iw2thshortbows.microchip": "Microchip",
+  "item.iw2thshortbows.silicon_pcb": "Silicon PCB",
+  "item.minecraft.tipped_arrow.effect.vulnerability": "Arrow of Vulnerability",
+  
+  "death.attack.rubberbandhit": "%1$s slapped themselves a bit too hard",
+  "death.attack.rubberbandhit.player": "%2$s made %1$s so shaky that they accidentally slapped themselves to death",
+  
+  "entity.iw2thshortbows.diamond_headed_arrow": "Diamond Headed Arrow",
+  
+  "enchantment.iw2thshortbows.precision": "Precision",
+  "enchantment.iw2thshortbows.inherit": "Inherit",
+  
+  "effect.iw2thshortbows.vulnerability": "Vulnerability",
+  
+  "block.iw2thshortbows.silicon_ore": "Silicon Ore"
+}

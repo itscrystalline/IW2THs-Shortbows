@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " XX",
+    "X #",
+    "X# "
+  ],
+  "key": {
+    "#": {
+      "item": "iw2thshortbows:rubber_band"
+    },
+    "X": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "iw2thshortbows:wooden_shortbow"
+  }
+}

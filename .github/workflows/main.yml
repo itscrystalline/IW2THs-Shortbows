@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Publish to Github Releases
 
 # Controls when the workflow will run
 on:
@@ -38,7 +38,7 @@ jobs:
         run: cd build/libs && rm *-sources.jar
 
       - name: Rename JAR
-        run: find . -name 'coolideas-*.jar' -type f -exec bash -c 'mv "$1" "${1/\/coolideas-/\/CoolIdeasMod-fabric-119-}"' -- {} \;
+        run: find . -name 'iw2thshortbows-*.jar' -type f -exec bash -c 'mv "$1" "${1/\/iw2thshortbows-/\/IWant2TryHardsShortbows-fabric-119-}"' -- {} \;
 
       - name: Publish to Github Releases
         uses: Kir-Antipov/mc-publish@v3.1

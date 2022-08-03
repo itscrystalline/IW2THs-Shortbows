@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "iw2thshortbows:items/diamond_arrow_head"
+  }
+}

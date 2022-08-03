@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX ",
+    "XS#",
+    " # "
+  ],
+  "key": {
+    "S": {
+      "item": "iw2thshortbows:iron_shortbow"
+    },
+    "X": {
+      "item": "iw2thshortbows:diamond_rod"
+    },
+    "#": {
+      "item": "iw2thshortbows:carbon_fiber"
+    }
+  },
+  "result": {
+    "item": "iw2thshortbows:diamond_shortbow"
+  }
+}
