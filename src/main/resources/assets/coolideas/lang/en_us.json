@@ -21,8 +21,8 @@
 
   "item.minecraft.tipped_arrow.effect.vulnerability": "Arrow of Vulnerability",
 
-  "death.attack.rubberbandhit": "%1$s hit themselves with rubber bands",
-  "death.attack.rubberbandhit.player": "%1$s hit themselves with rubber bands whilst fighting %2$s",
+  "death.attack.rubberbandhit": "%1$s slapped themselves a bit too hard",
+  "death.attack.rubberbandhit.player": "%2$s made %1$s so shaky that they accidentally slapped themselves to death",
 
   "entity.coolideas.diamond_headed_arrow": "Diamond Headed Arrow",
 
