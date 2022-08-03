@@ -19,11 +19,16 @@
   "item.coolideas.microchip": "Microchip",
   "item.coolideas.silicon_pcb": "Silicon PCB",
   "item.minecraft.tipped_arrow.effect.vulnerability": "Arrow of Vulnerability",
+  
   "death.attack.rubberbandhit": "%1$s slapped themselves a bit too hard",
   "death.attack.rubberbandhit.player": "%2$s made %1$s so shaky that they accidentally slapped themselves to death",
+  
   "entity.coolideas.diamond_headed_arrow": "Diamond Headed Arrow",
+  
   "enchantment.coolideas.precision": "Precision",
   "enchantment.coolideas.inherit": "Inherit",
+  
   "effect.coolideas.vulnerability": "Vulnerability",
+  
   "block.coolideas.silicon_ore": "Silicon Ore"
 }
