@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#X ",
+    "  X"
+  ],
+  "key": {
+    "#": {
+      "item": "iw2thshortbows:iron_rod"
+    },
+    "X": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "iw2thshortbows:tweezers"
+  }
+}

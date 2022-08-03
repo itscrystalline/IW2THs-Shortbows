@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X#X",
+    "XXX"
+  ],
+  "key": {
+    "#": {
+      "item": "iw2thshortbows:rubber_band"
+    },
+    "X": {
+      "item": "iw2thshortbows:spider_web"
+    }
+  },
+  "result": {
+    "item": "iw2thshortbows:latex_band"
+  }
+}

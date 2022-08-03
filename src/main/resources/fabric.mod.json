@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "coolideas",
-  "version": "1.7.1",
-  "name": "Cool Ideas Mod",
-  "description": "This is just some cool ideas i have that i put into this mod.",
+  "id": "iw2thshortbows",
+  "version": "1.0.0",
+  "name": "IWant2TryHard's Shortbows",
+  "description": "A mod that adds, well, shortbows! Shoot your foes with high speed! (And in style. Sort of.)",
   "authors": [
     "ThadDev (IWant2TryHard)"
   ],
@@ -12,18 +12,18 @@
     "sources": "https://github.com/MyNameTsThad/CoolIdeasMod/tree/fabric-119"
   },
   "license": "MIT",
-  "icon": "assets/coolideas/icon.png",
+  "icon": "assets/iw2thshortbows/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.thaddev.coolideas.CoolIdeasMod"
+      "com.thaddev.iw2thshortbows.IWant2TryHardsShortbows"
     ],
     "client": [
-      "com.thaddev.coolideas.CoolIdeasModClient"
+      "com.thaddev.iw2thshortbows.IWant2TryHardsShortbowsClient"
     ]
   },
   "mixins": [
-    "coolideas.mixins.json"
+    "iw2thshortbows.mixins.json"
   ],
 
   "depends": {
