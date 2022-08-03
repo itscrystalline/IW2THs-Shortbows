@@ -50,6 +50,7 @@ public class DiamondHeadedArrow extends PersistentProjectileEntity {
     private boolean shotByShortbow;
 
     private boolean isHoming;
+    private boolean hasHitTarget;
     LivingEntity target;
 
     public DiamondHeadedArrow(EntityType<? extends DiamondHeadedArrow> entityType, World world) {
@@ -147,10 +148,10 @@ public class DiamondHeadedArrow extends PersistentProjectileEntity {
     @Override
     public void tick() {
         super.tick();
-        if (inGroundTime > 20 && this.shotByShortbow) {
+        if (inGroundTime > 20 && this.shotByShortbow && this.pickupType == PickupPermission.CREATIVE_ONLY) {
             this.discard();
         }
-        if (this.isHoming() && (!this.inGround || this.inGroundTime <= 10)) {
+        if (this.isHoming() && (!this.inGround || this.inGroundTime <= 10) && !this.hasHitTarget) {
             this.setTarget();
             if (target != null && target.isAlive()) {
                 float i = 5f;
@@ -275,7 +276,7 @@ public class DiamondHeadedArrow extends PersistentProjectileEntity {
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
         if (this.target != null && entityHitResult.getEntity().getUuid().equals(this.target.getUuid())) {
-            this.discard();
+            this.hasHitTarget = true;
         }
     }
 

@@ -12,7 +12,7 @@ public class ShortBowArrow extends ArrowEntity {
 
     @Override
     public void tick() {
-        if (inGroundTime > 20) {
+        if (inGroundTime > 20 && this.pickupType == PickupPermission.CREATIVE_ONLY) {
             this.discard();
         }
         super.tick();
