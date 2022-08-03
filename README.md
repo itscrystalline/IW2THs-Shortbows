@@ -1,9 +1,3 @@
-# Cool Ideas Mod
----
-Cool Ideas that I have, had, and will have all combined into one mod.
+# IWant2TryHard's Shortbows
 
-This mod will branch into some other mods, If I have some features I believe are good enough to be published.
-
-This mod will also feature versions for 1.18.2 and 1.19, both **Forge** and **Fabric**.
-
-This current branch is for `Fabric 1.19`.
+IWant2TryHard's Shortbows: A mod that adds, well, shortbows! Shoot your foes with high speed! 
