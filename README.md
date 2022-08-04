@@ -12,7 +12,7 @@ Explore throughout the world to find things that will make your fast new weapon,
 
 Curseforge: https://www.curseforge.com/minecraft/mc-mods/iwant2tryhards-shortbows
 
-Modrinth: *Coming Soon*
+Modrinth: https://modrinth.com/mod/iwant2tryhards-shortbows
 
 Github releases: Right [Here](https://github.com/MyNameTsThad/IW2THs-Shortbows/releases/latest)! Just pick a version and modloader, download the corresponding Mod version, and have fun!
 
