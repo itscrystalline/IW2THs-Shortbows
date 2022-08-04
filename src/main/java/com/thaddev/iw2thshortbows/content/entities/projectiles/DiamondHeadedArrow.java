@@ -19,7 +19,6 @@ import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
@@ -90,9 +89,9 @@ public class DiamondHeadedArrow extends PersistentProjectileEntity {
     @Override
     public ItemStack asItemStack() {
         if (this.effects.isEmpty() && this.potion == Potions.EMPTY) {
-            return new ItemStack(Items.ARROW);
+            return new ItemStack(ItemInit.DIAMOND_HEADED_ARROW);
         }
-        ItemStack itemStack = new ItemStack(Items.TIPPED_ARROW);
+        ItemStack itemStack = new ItemStack(ItemInit.TIPPED_DIAMOND_HEADED_ARROW);
         PotionUtil.setPotion(itemStack, this.potion);
         PotionUtil.setCustomPotionEffects(itemStack, this.effects);
         if (this.colorSet) {
