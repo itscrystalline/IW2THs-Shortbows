@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Publish to Curseforge (Fabric 1.18.2)
+name: Publish to Modrinth (Fabric 1.18.2)
 
 # Controls when the workflow will run
 on:
@@ -39,5 +39,7 @@ jobs:
         with:
           loaders: fabric
           game-versions: 1.18.2
-          curseforge-id: 654495
-          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+          modrinth-id: iwant2tryhards-shortbows
+          modrinth-featured: true
+          modrinth-unfeature-mode: subset
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
