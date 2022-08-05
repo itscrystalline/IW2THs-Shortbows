@@ -2,6 +2,12 @@
 
 ![image](https://raw.githubusercontent.com/MyNameTsThad/IW2THs-Shortbows/forge-119/.github/IWant2TryHard's%20Shortbows%20Banner.png "IWant2TryHard's Shortbows")
 
+## Showcase Video (Click)
+
+[![IWant2TryHard's Shortbows Showcase =640x480](https://raw.githubusercontent.com/MyNameTsThad/IW2THs-Shortbows/forge-119/.github/IWant2TryHard's%20Shortbows%20Thumbnail.png)](https://www.youtube.com/watch?v=-wjA-Ry6BPc "IWant2TryHard's Shortbows Showcase")
+
+---
+
 ***IWant2TryHard's Shortbows*** is a mod that adds a new ranged weapon to Minecraft: Shortbows! It's the bow you all know and love, but quicker and stronger!
 Explore throughout the world to find things that will make your fast new weapon, even stronger!
 
