@@ -4,6 +4,7 @@ import com.thaddev.iw2thshortbows.content.entities.projectiles.DiamondHeadedArro
 import com.thaddev.iw2thshortbows.content.entities.projectiles.ShortBowArrow;
 import com.thaddev.iw2thshortbows.mechanics.damagesources.RubberBandHitDamage;
 import com.thaddev.iw2thshortbows.mechanics.inits.EnchantmentInit;
+import com.thaddev.iw2thshortbows.mechanics.inits.ItemInit;
 import com.thaddev.iw2thshortbows.util.ColorUtils;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -182,7 +183,7 @@ public class ShortBowBase extends BowItem {
             persistentProjectileEntity.setOnFireFor(getTicksOnFire());
         }
         stack.damage(1, player, p -> p.sendToolBreakStatus(player.getActiveHand()));
-        if (flag1 || player.getAbilities().creativeMode && (itemStack.isOf(Items.SPECTRAL_ARROW) || itemStack.isOf(Items.TIPPED_ARROW))) {
+        if (flag1 || player.getAbilities().creativeMode && (itemStack.isOf(Items.SPECTRAL_ARROW) || itemStack.isOf(Items.TIPPED_ARROW) || itemStack.isOf(ItemInit.DIAMOND_HEADED_ARROW) || itemStack.isOf(ItemInit.TIPPED_DIAMOND_HEADED_ARROW))) {
             persistentProjectileEntity.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;
         }
         world.spawnEntity(persistentProjectileEntity);
