@@ -29,8 +29,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Pseudo
 @Mixin(value = ModEvents.class, remap = false)
 public class ImmersiveWeatheringModEventsMixin {
-    @Inject(method = "lambda$registerEvents$5(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/world/World;Lnet/minecraft/util/Hand;Lnet/minecraft/util/hit/BlockHitResult;)Lnet/minecraft/util/ActionResult;",
-        at = @At("HEAD"), cancellable = true)
+    @Inject(method = "lambda$registerEvents$5", at = @At("HEAD"), cancellable = true, remap = false, require = 0)
     private static void lambda$registerEvents$5(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult, CallbackInfoReturnable<ActionResult> cir){
         if (player instanceof ServerPlayerEntity serverPlayer){
             BlockPos targetPos = hitResult.getBlockPos();
