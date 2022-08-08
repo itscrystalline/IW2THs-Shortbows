@@ -4,10 +4,10 @@
   "package": "com.thaddev.iw2thshortbows.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "AxeItemInvoker",
-    "AxeItemMixin",
     "BrewingRecipeRegistryMixin",
     "EnchantmentMixin",
+    "ImmersiveWeatheringModEventsAccessor",
+    "ImmersiveWeatheringModEventsMixin",
     "LivingEntityMixin",
     "MultishotEnchantmentMixin"
   ],

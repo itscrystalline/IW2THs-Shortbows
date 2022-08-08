@@ -13,6 +13,7 @@ import com.thaddev.iw2thshortbows.mechanics.inits.PotionInit;
 import com.thaddev.iw2thshortbows.mechanics.inits.RecipeSerializerInit;
 import com.thaddev.iw2thshortbows.util.CustomLogger;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.loader.api.FabricLoader;
 
 public class IWant2TryHardsShortbows implements ModInitializer {
 	public static final String MODID = "iw2thshortbows";
@@ -23,6 +24,10 @@ public class IWant2TryHardsShortbows implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		instance = this;
+
+		if (FabricLoader.getInstance().isModLoaded("immersive_weathering")) {
+			LOGGER.debug("Immersive Weathering (modid: immersive_weathering) detected! Mixing into `ModEvents#lambda$registerEvents$5`!");
+		}
 
 		Events.registerEvents();
 		ConfiguredFeaturesInit.registerConfiguredFeatures();
