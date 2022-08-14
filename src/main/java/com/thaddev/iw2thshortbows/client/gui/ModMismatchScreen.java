@@ -54,6 +54,8 @@ public class ModMismatchScreen extends Screen {
                     this.minecraft.setScreen(new ConfirmLinkScreen((p_169337_) -> {
                         if (p_169337_) {
                             Util.getPlatform().openUri("https://www.curseforge.com/minecraft/mc-mods/iwant2tryhards-shortbows/files");
+                            Util.getPlatform().openFile(new File(this.minecraft.gameDirectory.getAbsolutePath() + "/mods"));
+                            this.minecraft.stop();
                         }
 
                         this.minecraft.setScreen(this);
@@ -67,6 +69,8 @@ public class ModMismatchScreen extends Screen {
                     this.minecraft.setScreen(new ConfirmLinkScreen((p_169337_) -> {
                         if (p_169337_) {
                             Util.getPlatform().openUri("https://modrinth.com/mod/iwant2tryhards-shortbows/version/" + IWant2TryHardsShortbows.buildVersionString(ClientBrandRetriever.getClientModName()));
+                            Util.getPlatform().openFile(new File(this.minecraft.gameDirectory.getAbsolutePath() + "/mods"));
+                            this.minecraft.stop();
                         }
 
                         this.minecraft.setScreen(this);
