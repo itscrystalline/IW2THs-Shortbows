@@ -31,5 +31,23 @@
 
   "effect.iw2thshortbows.vulnerability": "Vulnerability",
 
-  "block.iw2thshortbows.silicon_ore": "Silicon Ore"
+  "block.iw2thshortbows.silicon_ore": "Silicon Ore",
+
+  "message.coolideas.welcome": "Welcome, %1$s! Server is running Cool Ideas Mod version %2$s, For %3$s %4$s.",
+
+  "menu.coolideas.modmismatch": "Cool Ideas Mod Version Mismatch",
+  "menu.coolideas.modmismatchmessage.1": "You are running a different version of Cool Ideas Mod than the server.",
+  "menu.coolideas.modmismatchmessage.2": "Please update your mod version to match the server.",
+  "menu.coolideas.modmismatchmessage.discrepancylist": "Discrepancies:",
+  "menu.coolideas.modmismatchmessage.modloader": "Modloader:",
+  "menu.coolideas.modmismatchmessage.modversion": "Mod Version:",
+  "menu.coolideas.modmismatchmessage.client": "Client",
+  "menu.coolideas.modmismatchmessage.server": "Server",
+  "menu.coolideas.modmismatchmessage.open_curseforge": "Open mod page (Curseforge)",
+  "menu.coolideas.modmismatchmessage.open_modrinth": "Open mod page (Modrinth)",
+  "menu.coolideas.modmismatchmessage.open_github": "Open mod page (Github)",
+  "menu.coolideas.modmismatchmessage.disconnect": "Disconnect",
+  "menu.coolideas.modmismatchmessage.ignore": "Ignore and Continue",
+  "menu.coolideas.modmismatchmessage.ignore_confirm": "NOT ADVISED! CONTINUE AT YOUR OWN RISK!",
+  "menu.coolideas.modmismatchmessage.no_download": "Download not available!"
 }

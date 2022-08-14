@@ -6,7 +6,12 @@ import com.thaddev.iw2thshortbows.content.entities.projectiles.ShortBowArrow;
 import com.thaddev.iw2thshortbows.mechanics.inits.EffectInit;
 import com.thaddev.iw2thshortbows.mechanics.inits.ItemInit;
 import com.thaddev.iw2thshortbows.mechanics.inits.TagsInit;
+import com.thaddev.iw2thshortbows.util.Utils;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.ClickEvent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -19,9 +24,12 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import static com.thaddev.iw2thshortbows.util.Utils.component;
 
 @Mod.EventBusSubscriber(modid = IWant2TryHardsShortbows.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Events {
@@ -62,6 +70,23 @@ public class Events {
         }
         if ((event.getSource().getDirectEntity() instanceof DiamondHeadedArrow | event.getSource().getDirectEntity() instanceof ShortBowArrow) && event.getSource().getEntity() instanceof Player player) {
             player.level.playSound(null, player.position().x, player.position().y, player.position().z, SoundEvents.ARROW_HIT_PLAYER, SoundSource.PLAYERS, 0.3F, 0.5F);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onLogin(final PlayerEvent.PlayerLoggedInEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player && player.level.getServer() != null) {// just in case
+            String loader = player.level.getServer().getServerModName().toLowerCase();
+            player.sendSystemMessage(
+                component(Utils.from("")).copy()
+                    .append(Component.literal("https://github.com/MyNameTsThad/CoolIdeasMod/blob/forge-119/README.md#ignore-if-you-did-not-come-from-an-in-game-chat-message").setStyle(
+                        Style.EMPTY
+                            .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/MyNameTsThad/CoolIdeasMod/blob/forge-119/README.md#ignore-if-you-did-not-come-from-an-in-game-chat-message"))
+                            .withColor(ChatFormatting.BLUE)
+                            .withUnderlined(true)
+                    ))
+                    .append(Component.literal(" (versionid:" + IWant2TryHardsShortbows.buildVersionString(loader) + ")"))
+            );
         }
     }
 }

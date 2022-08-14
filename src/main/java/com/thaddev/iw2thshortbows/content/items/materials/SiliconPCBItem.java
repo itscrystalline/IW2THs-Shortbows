@@ -1,6 +1,6 @@
 package com.thaddev.iw2thshortbows.content.items.materials;
 
-import com.thaddev.iw2thshortbows.util.ColorUtils;
+import com.thaddev.iw2thshortbows.util.Utils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-import static com.thaddev.iw2thshortbows.util.ColorUtils.component;
+import static com.thaddev.iw2thshortbows.util.Utils.component;
 
 public class SiliconPCBItem extends Item {
     MicrochipItem.MicrochipTypes[] types;
@@ -23,7 +23,7 @@ public class SiliconPCBItem extends Item {
     @Override
     public void appendHoverText(ItemStack thisStack, @Nullable Level world, List<Component> tag, TooltipFlag flags) {
         for (MicrochipItem.MicrochipTypes type : getTypes(thisStack)) {
-            tag.add(component(ColorUtils.fromNoTag(type.getName())));
+            tag.add(component(Utils.fromNoTag(type.getName())));
         }
         super.appendHoverText(thisStack, world, tag, flags);
     }

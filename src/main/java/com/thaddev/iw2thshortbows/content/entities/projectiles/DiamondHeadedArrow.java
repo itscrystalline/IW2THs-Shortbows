@@ -20,7 +20,6 @@ import net.minecraft.world.entity.boss.enderdragon.phases.DragonPhaseInstance;
 import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.monster.EnderMan;
-import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
@@ -33,7 +32,6 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -317,58 +315,45 @@ public class DiamondHeadedArrow extends AbstractArrow {
     private void setTarget() {
         if (target == null || target.isDeadOrDying() || (target instanceof EnderDragon dragon && dragon.getPhaseManager().getCurrentPhase().getPhase() == EnderDragonPhase.DYING)) {
             AABB aabb = (new AABB(new BlockPos(this.position()))).inflate(20).expandTowards(0.0D, level.getHeight(), 0.0D);
-            List<LivingEntity> nearbyEntities = this.level.getEntitiesOfClass(LivingEntity.class, aabb);
+            List<LivingEntity> potentialTargets = this.level.getEntitiesOfClass(LivingEntity.class, aabb);
 
-            if (nearbyEntities.size() == 0) {
+            if (potentialTargets.size() == 0) {
                 target = null;
                 return;
             }
 
-            List<LivingEntity> targetList = new ArrayList<>();
-
-            for (LivingEntity entity : nearbyEntities) {
-                if (entity.hasLineOfSight(this) && !entity.isDeadOrDying()) {
-                    if (entity instanceof Enemy) {
-                        if (!(entity instanceof EnderMan)) {
-                            if (!(entity instanceof WitherBoss) && !(entity instanceof EnderDragon)) {
-                                targetList.add(entity);
-                            } else if (entity instanceof WitherBoss && !((WitherBoss) entity).isPowered()) {
-                                targetList.add(entity);
-                            } else if (entity instanceof EnderDragon) {
-                                EnderDragonPhase<? extends DragonPhaseInstance> phase = ((EnderDragon) entity).getPhaseManager().getCurrentPhase().getPhase();
-                                //CoolIdeasMod.instance.printMessage(ColorUtils.from("(%$red)Dragon Phase: " + phase));
-                                if (phase != EnderDragonPhase.SITTING_ATTACKING &&
-                                    phase != EnderDragonPhase.SITTING_SCANNING &&
-                                    phase != EnderDragonPhase.SITTING_FLAMING &&
-                                    phase != EnderDragonPhase.DYING) {
-                                    targetList.add(entity);
-                                }
-                            }
-
-                        }
-                    } else if (entity instanceof Player player) {
-                        if (!player.getUUID().equals(Objects.requireNonNull(this.getOwner()).getUUID()) && !player.isCreative() && !player.isSpectator()) {
-                            if (this.getOwner() instanceof Player owner) {
-                                if (owner.canHarmPlayer(player)) {
-                                    targetList.add(entity);
-                                }
-                            } else {
-                                targetList.add(entity);
-                            }
-                        }
-                    }
-
+            potentialTargets.removeIf(LivingEntity::isDeadOrDying);
+            potentialTargets.removeIf(entity -> !entity.hasLineOfSight(this));
+            potentialTargets.removeIf(entity -> entity instanceof EnderMan);
+            potentialTargets.removeIf(entity -> (entity instanceof WitherBoss boss && boss.isPowered()));
+            potentialTargets.removeIf(entity -> {
+                if (entity instanceof EnderDragon){
+                    EnderDragonPhase<? extends DragonPhaseInstance> phase = ((EnderDragon) entity).getPhaseManager().getCurrentPhase().getPhase();
+                    return phase == EnderDragonPhase.SITTING_ATTACKING ||
+                        phase == EnderDragonPhase.SITTING_SCANNING ||
+                        phase == EnderDragonPhase.SITTING_FLAMING ||
+                        phase == EnderDragonPhase.DYING;
                 }
+                return false;
+            });
+            potentialTargets.removeIf(entity ->
+                entity instanceof Player player &&
+                    player.getUUID().equals(Objects.requireNonNull(this.getOwner()).getUUID())
+            );
+            potentialTargets.removeIf(entity ->
+                entity instanceof Player player && (player.isCreative() || player.isSpectator())
+            );
+            potentialTargets.removeIf(entity ->
+                entity instanceof Player player && this.getOwner() instanceof Player owner && !owner.canHarmPlayer(player)
+            );
 
-            }
 
-
-            if (targetList.size() == 0) {
+            if (potentialTargets.size() == 0) {
                 target = null;
                 return;
             }
 
-            target = targetList.get(random.nextInt(targetList.size()));
+            target = potentialTargets.get(random.nextInt(potentialTargets.size()));
         }
     }
 }

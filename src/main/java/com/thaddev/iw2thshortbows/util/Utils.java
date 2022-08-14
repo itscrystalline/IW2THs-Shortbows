@@ -2,12 +2,13 @@ package com.thaddev.iw2thshortbows.util;
 
 import com.thaddev.iw2thshortbows.IWant2TryHardsShortbows;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 
-public class ColorUtils {
+public class Utils {
     public static String black = "\u00A70";
     public static String dark_blue = "\u00A71";
     public static String dark_green = "\u00A72";
@@ -33,7 +34,7 @@ public class ColorUtils {
 
     public static String getColorFromCode(String color) {
         try {
-            Field colorField = ColorUtils.class.getField(color.substring(2));
+            Field colorField = Utils.class.getField(color.substring(2));
             return colorField.get("").toString();
         } catch (NoSuchFieldException | IllegalAccessException e) {
             IWant2TryHardsShortbows.LOGGER.error(Arrays.toString(e.getStackTrace()));
@@ -49,8 +50,8 @@ public class ColorUtils {
         return convert(fromText, "");
     }
 
-    public static Component component(String fromText) {
-        return Component.nullToEmpty(fromText);
+    public static MutableComponent component(String fromText) {
+        return (MutableComponent) Component.nullToEmpty(fromText);
     }
 
     public static String convert(String fromText, String initial) {
@@ -80,5 +81,10 @@ public class ColorUtils {
 
     public static Color integerToColor(int color) {
         return new Color(color);
+    }
+
+    public static String niceify(String text){
+        text = text.toLowerCase();
+        return text.substring(0, 1).toUpperCase() + text.substring(1);
     }
 }
