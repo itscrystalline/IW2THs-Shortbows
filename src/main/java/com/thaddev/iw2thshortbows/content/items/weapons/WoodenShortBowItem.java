@@ -1,6 +1,6 @@
 package com.thaddev.iw2thshortbows.content.items.weapons;
 
-import com.thaddev.iw2thshortbows.util.ColorUtils;
+import com.thaddev.iw2thshortbows.util.Utils;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-import static com.thaddev.iw2thshortbows.util.ColorUtils.component;
+import static com.thaddev.iw2thshortbows.util.Utils.component;
 
 public class WoodenShortBowItem extends ShortBowBase {
     public WoodenShortBowItem(Settings settings) {
@@ -45,7 +45,7 @@ public class WoodenShortBowItem extends ShortBowBase {
 
     @Override
     public void appendTooltip(@NotNull ItemStack stack, @Nullable World world, @NotNull List<Text> tooltip, @NotNull TooltipContext context) {
-        tooltip.add(component(ColorUtils.fromNoTag("(%$green)Shoots Instantly! (%$italic)beware... it can break easily!")));
+        tooltip.add(component(Utils.fromNoTag("(%$green)Shoots Instantly! (%$italic)beware... it can break easily!")));
         super.appendTooltip(stack, world, tooltip, context);
     }
 

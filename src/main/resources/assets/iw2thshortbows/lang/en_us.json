@@ -25,5 +25,21 @@
   "enchantment.iw2thshortbows.precision": "Precision",
   "enchantment.iw2thshortbows.inherit": "Inherit",
   "effect.iw2thshortbows.vulnerability": "Vulnerability",
-  "block.iw2thshortbows.silicon_ore": "Silicon Ore"
+  "block.iw2thshortbows.silicon_ore": "Silicon Ore",
+  "message.iw2thshortbows.welcome": "Welcome, %1$s! Server is running IWant2TryHard's Shortbows version %2$s, For %3$s %4$s.",
+  "menu.iw2thshortbows.modmismatch": "IWant2TryHard's Shortbows Version Mismatch",
+  "menu.iw2thshortbows.modmismatchmessage.1": "You are running a different version of IWant2TryHard's Shortbows than the server.",
+  "menu.iw2thshortbows.modmismatchmessage.2": "Please update your mod version to match the server.",
+  "menu.iw2thshortbows.modmismatchmessage.discrepancylist": "Discrepancies:",
+  "menu.iw2thshortbows.modmismatchmessage.modloader": "Modloader:",
+  "menu.iw2thshortbows.modmismatchmessage.modversion": "Mod Version:",
+  "menu.iw2thshortbows.modmismatchmessage.client": "Client",
+  "menu.iw2thshortbows.modmismatchmessage.server": "Server",
+  "menu.iw2thshortbows.modmismatchmessage.open_curseforge": "Open mod page (Curseforge)",
+  "menu.iw2thshortbows.modmismatchmessage.open_modrinth": "Open mod page (Modrinth)",
+  "menu.iw2thshortbows.modmismatchmessage.open_github": "Open mod page (Github)",
+  "menu.iw2thshortbows.modmismatchmessage.disconnect": "Disconnect",
+  "menu.iw2thshortbows.modmismatchmessage.ignore": "Ignore and Continue",
+  "menu.iw2thshortbows.modmismatchmessage.ignore_confirm": "NOT ADVISED! CONTINUE AT YOUR OWN RISK!",
+  "menu.iw2thshortbows.modmismatchmessage.no_download": "Download not available!"
 }
