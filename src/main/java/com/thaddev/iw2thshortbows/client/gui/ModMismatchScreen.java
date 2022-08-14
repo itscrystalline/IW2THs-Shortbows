@@ -48,7 +48,7 @@ public class ModMismatchScreen extends Screen {
     protected void init() {
         int pos = this.height / 2 + 30;
         if (!serverModLoader.equals(clientModLoader)) pos += 20;
-        this.addRenderableWidget(drawCenteredButton((this.width / 2) - 160, pos + 25, 150, 20, false, Component.translatable(OPEN_CURSEFORGE),
+        this.addRenderableWidget(drawCenteredButton((this.width / 2) - 160, pos + 25, 150, 20, true, Component.translatable(OPEN_CURSEFORGE),
                 (pButton) ->
                     this.minecraft.setScreen(new ConfirmLinkScreen((p_169337_) -> {
                         if (p_169337_) {
@@ -61,15 +61,15 @@ public class ModMismatchScreen extends Screen {
                     renderTooltip(pPoseStack, Component.translatable(NO_DOWNLOAD), pMouseX, pMouseY)
             )
         );
-        this.addRenderableWidget(drawCenteredButton((this.width / 2), pos + 25, 150, 20, false, Component.translatable(OPEN_MODRINTH),
+        this.addRenderableWidget(drawCenteredButton((this.width / 2), pos + 25, 150, 20, true, Component.translatable(OPEN_MODRINTH),
                 (pButton) ->
                     this.minecraft.setScreen(new ConfirmLinkScreen((p_169337_) -> {
                         if (p_169337_) {
-                            Util.getPlatform().openUri("");
+                            Util.getPlatform().openUri("https://modrinth.com/mod/iwant2tryhards-shortbows");
                         }
 
                         this.minecraft.setScreen(this);
-                    }, "", false)),
+                    }, "https://modrinth.com/mod/iwant2tryhards-shortbows", false)),
                 (pButton, pPoseStack, pMouseX, pMouseY) ->
                     renderTooltip(pPoseStack, Component.translatable(NO_DOWNLOAD), pMouseX, pMouseY)
             )
@@ -78,7 +78,7 @@ public class ModMismatchScreen extends Screen {
                 (pButton) ->
                     this.minecraft.setScreen(new ConfirmLinkScreen((p_169337_) -> {
                         if (p_169337_) {
-                            Util.getPlatform().openUri("https://github.com/MyNameTsThad/IWant2TryHardsShortbows");
+                            Util.getPlatform().openUri("https://github.com/MyNameTsThad/IW2THs-Shortbows");
                             Util.getPlatform().openFile(new File(this.minecraft.gameDirectory.getAbsolutePath() + "/mods"));
                             this.minecraft.stop();
                         }
