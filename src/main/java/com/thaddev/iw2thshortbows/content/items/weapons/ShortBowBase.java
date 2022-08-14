@@ -5,7 +5,7 @@ import com.thaddev.iw2thshortbows.content.entities.projectiles.ShortBowArrow;
 import com.thaddev.iw2thshortbows.mechanics.damagesources.RubberBandHitDamage;
 import com.thaddev.iw2thshortbows.mechanics.inits.EnchantmentInit;
 import com.thaddev.iw2thshortbows.mechanics.inits.ItemInit;
-import com.thaddev.iw2thshortbows.util.ColorUtils;
+import com.thaddev.iw2thshortbows.util.Utils;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
@@ -32,7 +32,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-import static com.thaddev.iw2thshortbows.util.ColorUtils.component;
+import static com.thaddev.iw2thshortbows.util.Utils.component;
 
 public class ShortBowBase extends BowItem {
 
@@ -212,7 +212,7 @@ public class ShortBowBase extends BowItem {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         if (doesHomeArrow(stack)) {
-            tooltip.add(component(ColorUtils.fromNoTag("(%$green)Homing")));
+            tooltip.add(component(Utils.fromNoTag("(%$green)Homing")));
         }
         super.appendTooltip(stack, world, tooltip, context);
     }

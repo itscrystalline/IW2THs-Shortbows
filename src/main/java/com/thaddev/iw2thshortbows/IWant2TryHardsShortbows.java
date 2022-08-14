@@ -13,6 +13,7 @@ import com.thaddev.iw2thshortbows.mechanics.inits.PotionInit;
 import com.thaddev.iw2thshortbows.mechanics.inits.RecipeSerializerInit;
 import com.thaddev.iw2thshortbows.util.CustomLogger;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.SharedConstants;
 
 public class IWant2TryHardsShortbows implements ModInitializer {
 	public static final String MODID = "iw2thshortbows";
@@ -20,9 +21,19 @@ public class IWant2TryHardsShortbows implements ModInitializer {
 	public static IWant2TryHardsShortbows instance;
 	public static IWant2TryHardsShortbowsClient client;
 
+	public static String VERSION = "1.1.0";
+
+	public static final String MESSAGE_WELCOME = "message.iw2thshortbows.welcome";
+	public static final String SCREEN_VERSION_MISMATCH = "menu.iw2thshortbows.modmismatch";
+
+	//CLIENT ONLY
+	public boolean isMismatching = false;
+
 	@Override
 	public void onInitialize() {
 		instance = this;
+
+		IWant2TryHardsShortbows.LOGGER.debug("Initializing IWant2TryHardsShortbows version {" + VERSION + "}");
 
 		Events.registerEvents();
 		ConfiguredFeaturesInit.registerConfiguredFeatures();
@@ -35,5 +46,9 @@ public class IWant2TryHardsShortbows implements ModInitializer {
 		EffectInit.registerEffects();
         PotionInit.registerPotions();
         RecipeSerializerInit.registerRecipes();
+	}
+
+	public static String buildVersionString(String modLoader) {
+		return modLoader + "-mc" + SharedConstants.VERSION_NAME + "-" + VERSION;
 	}
 }

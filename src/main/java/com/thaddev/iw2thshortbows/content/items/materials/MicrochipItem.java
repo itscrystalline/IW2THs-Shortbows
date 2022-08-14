@@ -1,6 +1,6 @@
 package com.thaddev.iw2thshortbows.content.items.materials;
 
-import com.thaddev.iw2thshortbows.util.ColorUtils;
+import com.thaddev.iw2thshortbows.util.Utils;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-import static com.thaddev.iw2thshortbows.util.ColorUtils.component;
+import static com.thaddev.iw2thshortbows.util.Utils.component;
 
 public class MicrochipItem extends Item {
     MicrochipTypes type;
@@ -25,7 +25,7 @@ public class MicrochipItem extends Item {
     public void appendTooltip(@NotNull ItemStack stack, @Nullable World world, @NotNull List<Text> tooltip, @NotNull TooltipContext context) {
         MicrochipTypes type;
         if ((type = getType(stack)) != null) {
-            tooltip.add(component(ColorUtils.fromNoTag(type.getName())));
+            tooltip.add(component(Utils.fromNoTag(type.getName())));
         }
         super.appendTooltip(stack, world, tooltip, context);
     }

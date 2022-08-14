@@ -26,3 +26,17 @@ Github releases: Right [Here](https://github.com/MyNameTsThad/IW2THs-Shortbows/r
 This project requires [JDK 17](https://adoptium.net/).
 
 Make sure you are on the right branch! Each version of the mod for each game version and modloader are in seperate branches, this one is `Fabric 1.19`.
+
+## IGNORE IF YOU DID NOT COME FROM AN IN GAME CHAT MESSAGE
+If you see this message apon joining a server:
+
+![text](https://user-images.githubusercontent.com/62128640/184470763-94fbcb86-2eb1-48cf-9fc3-a7eaf49ed3ff.png)
+
+That means your client is missing the mod or using an older version.
+
+Download the version the server uses from https://github.com/MyNameTsThad/IW2THs-Shortbows/releases
+(make sure you pick the right version, the `versionid` part at the end can tell you what version to download)
+
+---
+
+This Project is branched from [CoolIdeasMod](https://github.com/MyNameTsThad/CoolIdeasMod/tree/fabric-119).
