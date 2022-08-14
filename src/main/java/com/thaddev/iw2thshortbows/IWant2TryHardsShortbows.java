@@ -40,7 +40,7 @@ public class IWant2TryHardsShortbows {
         instance = this;
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        IWant2TryHardsShortbows.LOGGER.info("Initializing CoolIdeasMod version {}", VERSION);
+        IWant2TryHardsShortbows.LOGGER.info("Initializing IWant2TryHardsShortbows version {}", VERSION);
 
         modEventBus.addListener(this::setup);
         ItemInit.ITEMS.register(modEventBus);
