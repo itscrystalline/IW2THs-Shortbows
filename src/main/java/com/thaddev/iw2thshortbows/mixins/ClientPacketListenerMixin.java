@@ -29,10 +29,10 @@ public abstract class ClientPacketListenerMixin {
     @Inject(method = "handleSystemChat", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Gui;handleSystemChat(Lnet/minecraft/network/chat/ChatType;Lnet/minecraft/network/chat/Component;)V", shift = At.Shift.BEFORE), cancellable = true)
     private void handleSystemChat(ClientboundSystemChatPacket packet, CallbackInfo ci) {
         String message = packet.content().getString();
-        if (message.contains("CoolIdeas")) {
+        if (message.contains("IWant2TryHardsShortbows")) {
             IWant2TryHardsShortbows.LOGGER.info("Message successfully suppressed: " + message);
-            //FORMAT: [CoolIdeas] https://github.com/MyNameTsThad/IWant2TryHardsShortbows/blob/forge-119/README.md#ignore-if-you-did-not-come-from-an-in-game-chat-message (versionid:<Modloader>-mc<GameVersion>-<ModVersion>)
-            //  example: [CoolIdeas] https://github.com/MyNameTsThad/IWant2TryHardsShortbows/blob/forge-119/README.md#ignore-if-you-did-not-come-from-an-in-game-chat-message (versionid:forge-mc1.19-2.0.0)
+            //FORMAT: [IWant2TryHardsShortbows] https://github.com/MyNameTsThad/IWant2TryHardsShortbows/blob/forge-119/README.md#ignore-if-you-did-not-come-from-an-in-game-chat-message (versionid:<Modloader>-mc<GameVersion>-<ModVersion>)
+            //  example: [IWant2TryHardsShortbows] https://github.com/MyNameTsThad/IWant2TryHardsShortbows/blob/forge-119/README.md#ignore-if-you-did-not-come-from-an-in-game-chat-message (versionid:forge-mc1.19-2.0.0)
             String[] split = message.split(" ");
             String serverVersionString = split[2].substring(11, split[2].length() - 1);
             String serverVersion = serverVersionString.split("-")[2];

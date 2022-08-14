@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.thaddev.iw2thshortbows.IWant2TryHardsShortbows;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
+import net.minecraft.client.ClientBrandRetriever;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.ConfirmLinkScreen;
 import net.minecraft.client.gui.screens.Screen;
@@ -52,11 +53,11 @@ public class ModMismatchScreen extends Screen {
                 (pButton) ->
                     this.minecraft.setScreen(new ConfirmLinkScreen((p_169337_) -> {
                         if (p_169337_) {
-                            Util.getPlatform().openUri("");
+                            Util.getPlatform().openUri("https://www.curseforge.com/minecraft/mc-mods/iwant2tryhards-shortbows/files");
                         }
 
                         this.minecraft.setScreen(this);
-                    }, "", false)),
+                    }, "https://www.curseforge.com/minecraft/mc-mods/iwant2tryhards-shortbows/files", false)),
                 (pButton, pPoseStack, pMouseX, pMouseY) ->
                     renderTooltip(pPoseStack, Component.translatable(NO_DOWNLOAD), pMouseX, pMouseY)
             )
@@ -65,11 +66,11 @@ public class ModMismatchScreen extends Screen {
                 (pButton) ->
                     this.minecraft.setScreen(new ConfirmLinkScreen((p_169337_) -> {
                         if (p_169337_) {
-                            Util.getPlatform().openUri("https://modrinth.com/mod/iwant2tryhards-shortbows");
+                            Util.getPlatform().openUri("https://modrinth.com/mod/iwant2tryhards-shortbows/version/" + IWant2TryHardsShortbows.buildVersionString(ClientBrandRetriever.getClientModName()));
                         }
 
                         this.minecraft.setScreen(this);
-                    }, "https://modrinth.com/mod/iwant2tryhards-shortbows", false)),
+                    }, "https://modrinth.com/mod/iwant2tryhards-shortbows/version/" + IWant2TryHardsShortbows.buildVersionString(ClientBrandRetriever.getClientModName()), false)),
                 (pButton, pPoseStack, pMouseX, pMouseY) ->
                     renderTooltip(pPoseStack, Component.translatable(NO_DOWNLOAD), pMouseX, pMouseY)
             )

@@ -43,7 +43,7 @@ public class Utils {
     }
 
     public static String from(String fromText) {
-        return convert(fromText, dark_aqua + "[" + gold + "CoolIdeas" + dark_aqua + "] " + reset);
+        return convert(fromText, dark_aqua + "[" + gold + "IWant2TryHardsShortbows" + dark_aqua + "] " + reset);
     }
 
     public static String fromNoTag(String fromText) {

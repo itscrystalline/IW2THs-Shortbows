@@ -13,7 +13,7 @@ public class ClientForgeEvents {
     @SubscribeEvent
     public static void onRenderHud(final RenderGuiOverlayEvent.Post event) {
         if (IWant2TryHardsShortbows.instance.isMismatching){
-            Minecraft.getInstance().font.drawShadow(event.getPoseStack(), Utils.fromNoTag("(%$white)(%$bold)(%$underline)Version Mismatch! (from CoolIdeasMod)"), 10, 10, 100);
+            Minecraft.getInstance().font.drawShadow(event.getPoseStack(), Utils.fromNoTag("(%$white)(%$bold)(%$underline)Version Mismatch! (from IWant2TryHardsShortbows"), 10, 10, 100);
             Minecraft.getInstance().font.drawShadow(event.getPoseStack(), Utils.fromNoTag("(%$white)Please change your modloader / mod version to match"), 10, 22, 100);
             Minecraft.getInstance().font.drawShadow(event.getPoseStack(), Utils.fromNoTag("(%$white)the server modloader / mod version in the warning"), 10, 32, 100);
             Minecraft.getInstance().font.drawShadow(event.getPoseStack(), Utils.fromNoTag("(%$white)message displayed when you join!"), 10, 42, 100);
