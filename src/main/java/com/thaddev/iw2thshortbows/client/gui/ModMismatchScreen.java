@@ -49,7 +49,7 @@ public class ModMismatchScreen extends Screen {
     protected void init() {
         int pos = this.height / 2 + 30;
         if (!serverModLoader.equals(clientModLoader)) pos += 20;
-        this.addRenderableWidget(drawCenteredButton((this.width / 2) - 160, pos + 25, 150, 20, false, new TranslatableComponent(OPEN_CURSEFORGE),
+        this.addRenderableWidget(drawCenteredButton((this.width / 2) - 160, pos + 25, 150, 20, true, new TranslatableComponent(OPEN_CURSEFORGE),
                 (pButton) ->
                     this.minecraft.setScreen(new ConfirmLinkScreen((p_169337_) -> {
                         if (p_169337_) {
@@ -62,7 +62,7 @@ public class ModMismatchScreen extends Screen {
                     renderTooltip(pPoseStack, new TranslatableComponent(NO_DOWNLOAD), pMouseX, pMouseY)
             )
         );
-        this.addRenderableWidget(drawCenteredButton((this.width / 2), pos + 25, 150, 20, false, new TranslatableComponent(OPEN_MODRINTH),
+        this.addRenderableWidget(drawCenteredButton((this.width / 2), pos + 25, 150, 20, true, new TranslatableComponent(OPEN_MODRINTH),
                 (pButton) ->
                     this.minecraft.setScreen(new ConfirmLinkScreen((p_169337_) -> {
                         if (p_169337_) {
