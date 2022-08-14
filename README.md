@@ -39,4 +39,4 @@ Download the version the server uses from https://github.com/MyNameTsThad/IW2THs
 
 ---
 
-This Project is branched from [CoolIdeasMod](https://github.com/MyNameTsThad/CoolIdeasMod/tree/forge-119).
+This Project is branched from [CoolIdeasMod](https://github.com/MyNameTsThad/CoolIdeasMod/tree/forge-1182).
