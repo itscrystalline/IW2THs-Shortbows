@@ -79,9 +79,9 @@ public class Events {
             String loader = player.level.getServer().getServerModName().toLowerCase();
             player.sendSystemMessage(
                 component(Utils.from("")).copy()
-                    .append(Component.literal("https://github.com/MyNameTsThad/CoolIdeasMod/blob/forge-119/README.md#ignore-if-you-did-not-come-from-an-in-game-chat-message").setStyle(
+                    .append(Component.literal("https://github.com/MyNameTsThad/IW2THs-Shortbows/blob/forge-119/README.md#ignore-if-you-did-not-come-from-an-in-game-chat-message").setStyle(
                         Style.EMPTY
-                            .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/MyNameTsThad/CoolIdeasMod/blob/forge-119/README.md#ignore-if-you-did-not-come-from-an-in-game-chat-message"))
+                            .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/MyNameTsThad/IW2THs-Shortbows/blob/forge-119/README.md#ignore-if-you-did-not-come-from-an-in-game-chat-message"))
                             .withColor(ChatFormatting.BLUE)
                             .withUnderlined(true)
                     ))

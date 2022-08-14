@@ -31,8 +31,8 @@ public abstract class ClientPacketListenerMixin {
         String message = packet.content().getString();
         if (message.contains("IWant2TryHardsShortbows")) {
             IWant2TryHardsShortbows.LOGGER.info("Message successfully suppressed: " + message);
-            //FORMAT: [IWant2TryHardsShortbows] https://github.com/MyNameTsThad/IWant2TryHardsShortbows/blob/forge-119/README.md#ignore-if-you-did-not-come-from-an-in-game-chat-message (versionid:<Modloader>-mc<GameVersion>-<ModVersion>)
-            //  example: [IWant2TryHardsShortbows] https://github.com/MyNameTsThad/IWant2TryHardsShortbows/blob/forge-119/README.md#ignore-if-you-did-not-come-from-an-in-game-chat-message (versionid:forge-mc1.19-2.0.0)
+            //FORMAT: [IWant2TryHardsShortbows] https://github.com/MyNameTsThad/IW2THs-Shortbows/blob/forge-119/README.md#ignore-if-you-did-not-come-from-an-in-game-chat-message (versionid:<Modloader>-mc<GameVersion>-<ModVersion>)
+            //  example: [IWant2TryHardsShortbows] https://github.com/MyNameTsThad/IW2THs-Shortbows/blob/forge-119/README.md#ignore-if-you-did-not-come-from-an-in-game-chat-message (versionid:forge-mc1.19-2.0.0)
             String[] split = message.split(" ");
             String serverVersionString = split[2].substring(11, split[2].length() - 1);
             String serverVersion = serverVersionString.split("-")[2];
@@ -42,7 +42,7 @@ public abstract class ClientPacketListenerMixin {
 
             String clientModLoader = ClientBrandRetriever.getClientModName();
             String clientVersion = IWant2TryHardsShortbows.VERSION;
-            //TO SEND: [CoolIdeas] Welcome, <playerName>! Server is running Cool Ideas Mod version <modVersion>, For <modLoader> <gameVersion>.
+            //TO SEND: [IWant2TryHardsShortbows] Welcome, <playerName>! Server is running IWant2TryHard's Shortbows version <modVersion>, For <modLoader> <gameVersion>.
 
             String niceServerModLoader = Utils.niceify(serverModLoader);
             String niceClientModLoader = Utils.niceify(clientModLoader);
