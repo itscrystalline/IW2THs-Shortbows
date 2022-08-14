@@ -7,7 +7,12 @@ import com.thaddev.iw2thshortbows.mechanics.inits.EffectInit;
 import com.thaddev.iw2thshortbows.mechanics.inits.ItemInit;
 import com.thaddev.iw2thshortbows.mechanics.inits.OreGeneration;
 import com.thaddev.iw2thshortbows.mechanics.inits.TagsInit;
+import com.thaddev.iw2thshortbows.util.Utils;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.ClickEvent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -20,12 +25,15 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.Objects;
+
+import static com.thaddev.iw2thshortbows.util.Utils.component;
 
 @Mod.EventBusSubscriber(modid = IWant2TryHardsShortbows.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Events {
@@ -72,5 +80,23 @@ public class Events {
     @SubscribeEvent
     public static void onBiomeLoad(final BiomeLoadingEvent event) {
         OreGeneration.generateOres(event);
+    }
+
+    @SubscribeEvent
+    public static void onLogin(final PlayerEvent.PlayerLoggedInEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player && player.level.getServer() != null) {// just in case
+            String loader = player.level.getServer().getServerModName().toLowerCase();
+            player.sendMessage(
+                component(Utils.from("")).copy()
+                    .append(Component.nullToEmpty("https://github.com/MyNameTsThad/IW2THs-Shortbows/blob/forge-119/README.md#ignore-if-you-did-not-come-from-an-in-game-chat-message").copy().withStyle(
+                        Style.EMPTY
+                            .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/MyNameTsThad/IW2THs-Shortbows/blob/forge-119/README.md#ignore-if-you-did-not-come-from-an-in-game-chat-message"))
+                            .withColor(ChatFormatting.BLUE)
+                            .withUnderlined(true)
+                    ))
+                    .append(Component.nullToEmpty(" (versionid:" + IWant2TryHardsShortbows.buildVersionString(loader) + ")")),
+                player.getUUID()
+            );
+        }
     }
 }

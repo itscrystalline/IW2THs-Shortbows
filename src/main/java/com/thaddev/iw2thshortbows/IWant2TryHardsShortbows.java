@@ -9,6 +9,7 @@ import com.thaddev.iw2thshortbows.mechanics.inits.ItemInit;
 import com.thaddev.iw2thshortbows.mechanics.inits.PotionInit;
 import com.thaddev.iw2thshortbows.mechanics.inits.PotionRecipeInit;
 import com.thaddev.iw2thshortbows.mechanics.inits.RecipeSerializerInit;
+import net.minecraft.SharedConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -22,12 +23,21 @@ public class IWant2TryHardsShortbows {
     public static final String MODID = "iw2thshortbows";
     public static final Logger LOGGER = LogUtils.getLogger();
     public static IWant2TryHardsShortbows instance;
+    public static String VERSION = "1.8.0";
+
+    public static final String MESSAGE_WELCOME = "message.iw2thshortbows.welcome";
+    public static final String SCREEN_VERSION_MISMATCH = "menu.iw2thshortbows.modmismatch";
 
     public Minecraft mc;
+
+    //CLIENT ONLY
+    public boolean isMismatching = false;
 
     public IWant2TryHardsShortbows() {
         instance = this;
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        IWant2TryHardsShortbows.LOGGER.info("Initializing IWant2TryHardsShortbows version {}", VERSION);
 
         modEventBus.addListener(this::setup);
         ItemInit.ITEMS.register(modEventBus);
@@ -41,5 +51,9 @@ public class IWant2TryHardsShortbows {
 
     public void setup(final FMLCommonSetupEvent event) {
         event.enqueueWork(PotionRecipeInit::register);
+    }
+
+    public static String buildVersionString(String modLoader) {
+        return modLoader + "-mc" + SharedConstants.VERSION_STRING + "-" + VERSION;
     }
 }

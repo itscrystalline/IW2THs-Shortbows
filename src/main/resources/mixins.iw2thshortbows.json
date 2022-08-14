@@ -9,5 +9,8 @@
   "refmap": "iw2thshortbows.mixin-refmap.json",
   "mixins": [
     "MultiShotEnchantmentMixin"
+  ],
+  "client": [
+    "ClientLevelMixin"
   ]
 }

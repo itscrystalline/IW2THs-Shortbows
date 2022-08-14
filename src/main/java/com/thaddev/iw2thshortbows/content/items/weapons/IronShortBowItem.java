@@ -1,7 +1,7 @@
 package com.thaddev.iw2thshortbows.content.items.weapons;
 
 import com.thaddev.iw2thshortbows.mechanics.inits.ItemInit;
-import com.thaddev.iw2thshortbows.util.ColorUtils;
+import com.thaddev.iw2thshortbows.util.Utils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-import static com.thaddev.iw2thshortbows.util.ColorUtils.component;
+import static com.thaddev.iw2thshortbows.util.Utils.component;
 
 public class IronShortBowItem extends ShortBowBase {
     public IronShortBowItem(Properties properties) {
@@ -47,7 +47,7 @@ public class IronShortBowItem extends ShortBowBase {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level world, @NotNull List<Component> tooltip, @NotNull TooltipFlag flags) {
-        tooltip.add(component(ColorUtils.fromNoTag("(%$white)Shoots Instantly! (%$italic)Make sure to not hit yourself!")));
+        tooltip.add(component(Utils.fromNoTag("(%$white)Shoots Instantly! (%$italic)Make sure to not hit yourself!")));
         super.appendHoverText(stack, world, tooltip, flags);
     }
 

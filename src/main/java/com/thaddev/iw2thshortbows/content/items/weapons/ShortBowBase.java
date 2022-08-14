@@ -4,7 +4,7 @@ import com.thaddev.iw2thshortbows.content.entities.projectiles.DiamondHeadedArro
 import com.thaddev.iw2thshortbows.content.entities.projectiles.ShortBowArrow;
 import com.thaddev.iw2thshortbows.mechanics.damagesources.RubberBandHitDamage;
 import com.thaddev.iw2thshortbows.mechanics.inits.EnchantmentInit;
-import com.thaddev.iw2thshortbows.util.ColorUtils;
+import com.thaddev.iw2thshortbows.util.Utils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -36,7 +36,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static com.thaddev.iw2thshortbows.util.ColorUtils.component;
+import static com.thaddev.iw2thshortbows.util.Utils.component;
 
 public class ShortBowBase extends BowItem {
 
@@ -252,7 +252,7 @@ public class ShortBowBase extends BowItem {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level world, @NotNull List<Component> tooltip, @NotNull TooltipFlag flags) {
         if (doesHomeArrow(stack)) {
-            tooltip.add(component(ColorUtils.fromNoTag("(%$green)Homing")));
+            tooltip.add(component(Utils.fromNoTag("(%$green)Homing")));
         }
         super.appendHoverText(stack, world, tooltip, flags);
     }
