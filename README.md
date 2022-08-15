@@ -28,7 +28,7 @@ This project requires [JDK 17](https://adoptium.net/).
 Make sure you are on the right branch! Each version of the mod for each game version and modloader are in seperate branches, this one is `Fabric 1.19`.
 
 ## IGNORE IF YOU DID NOT COME FROM AN IN GAME CHAT MESSAGE
-If you see this message apon joining a server:
+If you see this message apon joining a server: (Replace CoolIdeasMod with IWant2TryHardsShortbows)
 
 ![text](https://user-images.githubusercontent.com/62128640/184470763-94fbcb86-2eb1-48cf-9fc3-a7eaf49ed3ff.png)
 
