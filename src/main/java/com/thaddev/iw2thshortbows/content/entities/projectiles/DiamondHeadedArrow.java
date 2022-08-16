@@ -15,6 +15,7 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.mob.EndermanEntity;
+import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
@@ -306,6 +307,7 @@ public class DiamondHeadedArrow extends PersistentProjectileEntity {
             }
 
             potentialTargets.removeIf(LivingEntity::isDead);
+            potentialTargets.removeIf(entity -> !(entity instanceof Monster));
             potentialTargets.removeIf(entity -> !entity.canSee(this));
             potentialTargets.removeIf(entity -> entity instanceof EndermanEntity);
             potentialTargets.removeIf(entity -> (entity instanceof WitherEntity boss && boss.shouldRenderOverlay()));
