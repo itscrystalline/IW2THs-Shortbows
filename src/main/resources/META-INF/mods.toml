@@ -4,7 +4,7 @@ license="MIT"
 
 [[mods]]
 modId = "iw2thshortbows"
-version = "1.1.0" #mandatory
+version = "1.1.0-patch1" #mandatory
 displayName = "IWant2TryHard's Shortbows" #mandatory
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
 displayURL = "https://github.com/MyNameTsThad/IW2THs-Shortbows" #optional
