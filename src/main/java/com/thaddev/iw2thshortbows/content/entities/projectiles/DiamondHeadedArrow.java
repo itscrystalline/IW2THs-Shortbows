@@ -20,6 +20,7 @@ import net.minecraft.world.entity.boss.enderdragon.phases.DragonPhaseInstance;
 import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
@@ -323,6 +324,7 @@ public class DiamondHeadedArrow extends AbstractArrow {
             }
 
             potentialTargets.removeIf(LivingEntity::isDeadOrDying);
+            potentialTargets.removeIf(entity -> !(entity instanceof Enemy));
             potentialTargets.removeIf(entity -> !entity.hasLineOfSight(this));
             potentialTargets.removeIf(entity -> entity instanceof EnderMan);
             potentialTargets.removeIf(entity -> (entity instanceof WitherBoss boss && boss.isPowered()));
