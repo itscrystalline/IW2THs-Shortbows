@@ -26,7 +26,7 @@ public class IWant2TryHardsShortbows {
     public static final String MODID = "iw2thshortbows";
     public static final Logger LOGGER = LogUtils.getLogger();
     public static IWant2TryHardsShortbows instance;
-    public static String VERSION = "1.1.0-patch1";
+    public static String VERSION = "1.1.0-patch2";
 
     public static final String MESSAGE_WELCOME = "message.iw2thshortbows.welcome";
     public static final String SCREEN_VERSION_MISMATCH = "menu.iw2thshortbows.modmismatch";
