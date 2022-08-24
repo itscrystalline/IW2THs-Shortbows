@@ -34,8 +34,10 @@ public class ClientPlayNetworkHandlerMixin {
             String[] split = message.split(" ");
             String serverVersionString = split[2].substring(11, split[2].length() - 1);
             String serverVersion = serverVersionString.split("-")[2];
-            if (serverVersionString.split("-").length > 3)
+            if (serverVersionString.split("-").length > 3) {
+                serverVersion += "-";
                 serverVersion += serverVersionString.split("-")[3];
+            }
             String serverModLoader = serverVersionString.split("-")[0];
 
             String clientModLoader = ClientBrandRetriever.getClientModName();
