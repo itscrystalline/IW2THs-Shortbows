@@ -1,6 +1,5 @@
 package com.thaddev.iw2thshortbows;
 
-import com.thaddev.iw2thshortbows.mechanics.ClientEvents;
 import com.thaddev.iw2thshortbows.mechanics.Events;
 import com.thaddev.iw2thshortbows.mechanics.inits.BlockInit;
 import com.thaddev.iw2thshortbows.mechanics.inits.ConfiguredFeaturesInit;
@@ -37,7 +36,6 @@ public class IWant2TryHardsShortbows implements ModInitializer {
 		IWant2TryHardsShortbows.LOGGER.debug("Initializing IWant2TryHardsShortbows version {" + VERSION + "}");
 
 		Events.registerEvents();
-		ClientEvents.registerEvents();
 		ConfiguredFeaturesInit.registerConfiguredFeatures();
         ItemInit.registerItems();
         LootTableModifierInit.modifyLootTables();
