@@ -1,5 +1,6 @@
 package com.thaddev.iw2thshortbows;
 
+import com.thaddev.iw2thshortbows.mechanics.ClientEvents;
 import com.thaddev.iw2thshortbows.mechanics.Events;
 import com.thaddev.iw2thshortbows.mechanics.inits.BlockInit;
 import com.thaddev.iw2thshortbows.mechanics.inits.ConfiguredFeaturesInit;
@@ -21,7 +22,7 @@ public class IWant2TryHardsShortbows implements ModInitializer {
 	public static IWant2TryHardsShortbows instance;
 	public static IWant2TryHardsShortbowsClient client;
 
-	public static String VERSION = "1.1.0-patch2";
+	public static String VERSION = "1.1.0-patch3";
 
 	public static final String MESSAGE_WELCOME = "message.iw2thshortbows.welcome";
 	public static final String SCREEN_VERSION_MISMATCH = "menu.iw2thshortbows.modmismatch";
@@ -36,6 +37,7 @@ public class IWant2TryHardsShortbows implements ModInitializer {
 		IWant2TryHardsShortbows.LOGGER.debug("Initializing IWant2TryHardsShortbows version {" + VERSION + "}");
 
 		Events.registerEvents();
+		ClientEvents.registerEvents();
 		ConfiguredFeaturesInit.registerConfiguredFeatures();
         ItemInit.registerItems();
         LootTableModifierInit.modifyLootTables();

@@ -19,6 +19,6 @@ public class ConfiguredFeaturesInit {
         Feature.ORE, new OreFeatureConfig(NETHER_SILICON_ORES, 4));
 
     public static void registerConfiguredFeatures() {
-        IWant2TryHardsShortbows.LOGGER.debug("Registering Configured Features for " + IWant2TryHardsShortbows.MODID + " (2/11)");
+        IWant2TryHardsShortbows.LOGGER.debug("Registering Configured Features for " + IWant2TryHardsShortbows.MODID + " (3/11)");
     }
 }
