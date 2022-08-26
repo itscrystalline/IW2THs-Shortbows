@@ -1,6 +1,7 @@
 package com.thaddev.iw2thshortbows;
 
 import com.thaddev.iw2thshortbows.client.renderer.entity.DiamondHeadedArrowRenderer;
+import com.thaddev.iw2thshortbows.mechanics.ClientEvents;
 import com.thaddev.iw2thshortbows.mechanics.inits.EntityTypeInit;
 import com.thaddev.iw2thshortbows.mechanics.inits.ItemInit;
 import net.fabricmc.api.ClientModInitializer;
@@ -16,5 +17,6 @@ public class IWant2TryHardsShortbowsClient implements ClientModInitializer {
 			(itemStack, color) -> color > 0 ? -1 : PotionUtil.getColor(itemStack),
 			ItemInit.TIPPED_DIAMOND_HEADED_ARROW
 		);
+		ClientEvents.registerEvents();
 	}
 }
