@@ -5,6 +5,8 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "BrewingRecipeRegistryMixin",
+    "CrossbowItemAccessor",
+    "CrossbowItemMixin",
     "EnchantmentMixin",
     "ImmersiveWeatheringModEventsAccessor",
     "ImmersiveWeatheringModEventsMixin",

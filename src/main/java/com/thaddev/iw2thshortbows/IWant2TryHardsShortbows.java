@@ -13,7 +13,7 @@ import com.thaddev.iw2thshortbows.mechanics.inits.PotionInit;
 import com.thaddev.iw2thshortbows.mechanics.inits.RecipeSerializerInit;
 import com.thaddev.iw2thshortbows.util.CustomLogger;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.SharedConstants;
+import net.fabricmc.loader.api.FabricLoader;
 
 public class IWant2TryHardsShortbows implements ModInitializer {
 	public static final String MODID = "iw2thshortbows";
@@ -21,7 +21,7 @@ public class IWant2TryHardsShortbows implements ModInitializer {
 	public static IWant2TryHardsShortbows instance;
 	public static IWant2TryHardsShortbowsClient client;
 
-	public static String VERSION = "1.1.0-patch3";
+	public static String VERSION = "1.1.1";
 
 	public static final String MESSAGE_WELCOME = "message.iw2thshortbows.welcome";
 	public static final String SCREEN_VERSION_MISMATCH = "menu.iw2thshortbows.modmismatch";
@@ -32,6 +32,10 @@ public class IWant2TryHardsShortbows implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		instance = this;
+
+		if (FabricLoader.getInstance().isModLoaded("immersive_weathering")) {
+			LOGGER.debug("Immersive Weathering (modid: immersive_weathering) detected! Mixing into `ModEvents#lambda$registerEvents$5`!");
+		}
 
 		IWant2TryHardsShortbows.LOGGER.debug("Initializing IWant2TryHardsShortbows version {" + VERSION + "}");
 
@@ -49,6 +53,6 @@ public class IWant2TryHardsShortbows implements ModInitializer {
 	}
 
 	public static String buildVersionString(String modLoader) {
-		return modLoader + "-mc" + SharedConstants.VERSION_NAME + "-" + VERSION;
+		return modLoader + "-" + VERSION;
 	}
 }

@@ -2,16 +2,16 @@ package com.thaddev.iw2thshortbows.content.enchantment;
 
 import com.thaddev.iw2thshortbows.content.items.weapons.DiamondShortBowItem;
 import com.thaddev.iw2thshortbows.content.items.weapons.IronShortBowItem;
+import com.thaddev.iw2thshortbows.mechanics.inits.EnchantmentTargets;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 public class PrecisionEnchantment extends Enchantment {
 
-    public PrecisionEnchantment(Rarity weight, EnchantmentTarget type, EquipmentSlot... slotTypes) {
-        super(weight, type, slotTypes);
+    public PrecisionEnchantment(Rarity weight, EquipmentSlot... slotTypes) {
+        super(weight, EnchantmentTargets.SHORTBOW, slotTypes);
     }
 
     @Override

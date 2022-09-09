@@ -32,7 +32,7 @@
   
   "block.iw2thshortbows.silicon_ore": "Silicon Ore",
   
-  "message.iw2thshortbows.welcome": "Welcome, %1$s! Server is running Cool Ideas Mod version %2$s, For %3$s %4$s.",
+  "message.iw2thshortbows.welcome": "Welcome, %1$s! Server is running IWant2TryHard's Shortbows version %2$s, For %3$s %4$s.",
   
   "menu.iw2thshortbows.modmismatch": "Cool Ideas Mod Version Mismatch",
   "menu.iw2thshortbows.modmismatchmessage.1": "You are running a different version of Cool Ideas Mod than the server.",
