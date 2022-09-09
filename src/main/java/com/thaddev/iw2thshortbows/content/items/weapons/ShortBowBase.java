@@ -192,7 +192,7 @@ public class ShortBowBase extends BowItem {
         }
 
         shortBowArrow.setBaseDamage(shortBowArrow.getBaseDamage() * 0.75D);
-        shortBowArrow.shootFromRotation(player, player.getXRot(), player.getYRot() + (j * 8), 0.0F, strength * 3.0F, 1.0F);
+        shortBowArrow.shootFromRotation(player, player.getXRot(), player.getYRot() + (j * 15), 0.0F, strength * 3.0F, 1.0F);
         if (crit) {
             shortBowArrow.setCritArrow(true);
         }
