@@ -169,7 +169,7 @@ public class ShortBowBase extends BowItem {
 
         int l, k;
         persistentProjectileEntity.setDamage(persistentProjectileEntity.getDamage() * 0.75D);
-        persistentProjectileEntity.setVelocity(player, player.getPitch(), player.getYaw() + (j * 8), 0.0f, strength * 3.0f, 1.0f);
+        persistentProjectileEntity.setVelocity(player, player.getPitch(), player.getYaw() + (j * 15), 0.0f, strength * 3.0f, 1.0f);
         if (crit) {
             persistentProjectileEntity.setCritical(true);
         }

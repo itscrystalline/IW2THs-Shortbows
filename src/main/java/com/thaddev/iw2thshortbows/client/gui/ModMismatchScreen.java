@@ -61,7 +61,7 @@ public class ModMismatchScreen extends Screen {
                         this.client.setScreen(this);
                     }, "https://www.curseforge.com/minecraft/mc-mods/iwant2tryhards-shortbows/files", false)),
                 (pButtonWidget, pPoseStack, pMouseX, pMouseY) ->
-                    renderTooltip(pPoseStack, new TranslatableText(NO_DOWNLOAD), pMouseX, pMouseY)
+                    renderTooltip(pPoseStack, new TranslatableText(OPEN_CURSEFORGE), pMouseX, pMouseY)
             )
         );
         this.addDrawableChild(drawCenteredButtonWidget((this.width / 2), pos + 25, 150, 20, true, new TranslatableText(OPEN_MODRINTH),
@@ -76,7 +76,7 @@ public class ModMismatchScreen extends Screen {
                         this.client.setScreen(this);
                     }, "https://modrinth.com/mod/iwant2tryhards-shortbows/version/" + IWant2TryHardsShortbows.buildVersionString(ClientBrandRetriever.getClientModName()), false)),
                 (pButtonWidget, pPoseStack, pMouseX, pMouseY) ->
-                    renderTooltip(pPoseStack, new TranslatableText(NO_DOWNLOAD), pMouseX, pMouseY)
+                    renderTooltip(pPoseStack, new TranslatableText(OPEN_MODRINTH), pMouseX, pMouseY)
             )
         );
         this.addDrawableChild(drawCenteredButtonWidget((this.width / 2) + 160, pos + 25, 150, 20, true, new TranslatableText(OPEN_GITHUB),

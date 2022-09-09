@@ -4,7 +4,6 @@ import com.thaddev.iw2thshortbows.IWant2TryHardsShortbows;
 import com.thaddev.iw2thshortbows.content.enchantment.InheritEnchantment;
 import com.thaddev.iw2thshortbows.content.enchantment.PrecisionEnchantment;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -12,10 +11,10 @@ import net.minecraft.util.registry.Registry;
 public class EnchantmentInit {
 
     public static Enchantment INHERIT = registerEnchantment("inherit",
-        new InheritEnchantment(Enchantment.Rarity.UNCOMMON, EnchantmentTarget.WEAPON, EquipmentSlot.MAINHAND)
+        new InheritEnchantment(Enchantment.Rarity.UNCOMMON, EquipmentSlot.MAINHAND)
     );
     public static Enchantment PRECISION = registerEnchantment("precision",
-        new PrecisionEnchantment(Enchantment.Rarity.UNCOMMON, EnchantmentTarget.WEAPON, EquipmentSlot.MAINHAND)
+        new PrecisionEnchantment(Enchantment.Rarity.UNCOMMON, EquipmentSlot.MAINHAND)
     );
 
     private static Enchantment registerEnchantment(String name, Enchantment enchantment) {
