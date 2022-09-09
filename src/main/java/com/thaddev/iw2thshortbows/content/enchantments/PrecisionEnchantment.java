@@ -37,4 +37,9 @@ public class PrecisionEnchantment extends Enchantment {
     public boolean canEnchant(ItemStack stack) {
         return stack.getItem() instanceof IronShortBowItem || stack.getItem() instanceof DiamondShortBowItem;
     }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack) {
+        return (stack.getItem() instanceof IronShortBowItem || stack.getItem() instanceof DiamondShortBowItem);
+    }
 }

@@ -8,6 +8,8 @@
   },
   "refmap": "iw2thshortbows.mixin-refmap.json",
   "mixins": [
+    "CrossbowItemAccessor",
+    "CrossbowItemMixin",
     "MultiShotEnchantmentMixin"
   ],
   "client": [
