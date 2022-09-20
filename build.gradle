@@ -19,7 +19,7 @@ plugins {
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
-version = '1.1.1'
+version = '1.1.2'
 group = 'com.thaddev.iw2thshortbows' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'iw2thshortbows'
 

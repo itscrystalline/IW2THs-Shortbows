@@ -61,7 +61,7 @@ public class ModMismatchScreen extends Screen {
                         this.minecraft.setScreen(this);
                     }, "https://www.curseforge.com/minecraft/mc-mods/iwant2tryhards-shortbows/files", false)),
                 (pButton, pPoseStack, pMouseX, pMouseY) ->
-                    renderTooltip(pPoseStack, Component.translatable(OPEN_GITHUB), pMouseX, pMouseY)
+                    renderTooltip(pPoseStack, Component.translatable(OPEN_CURSEFORGE), pMouseX, pMouseY)
             )
         );
         this.addRenderableWidget(drawCenteredButton((this.width / 2), pos + 25, 150, 20, true, Component.translatable(OPEN_MODRINTH),
