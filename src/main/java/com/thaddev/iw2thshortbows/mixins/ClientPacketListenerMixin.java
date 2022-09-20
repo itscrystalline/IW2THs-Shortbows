@@ -35,10 +35,10 @@ public abstract class ClientPacketListenerMixin {
                 //  example: [CoolIdeas] https://github.com/MyNameTsThad/IW2THs-Shortbows/blob/forge-119/README.md#ignore-if-you-did-not-come-from-an-in-game-chat-message (versionid:forge-mc1.19-2.0.0)
                 String[] split = message.split(" ");
                 String serverVersionString = split[2].substring(11, split[2].length() - 1);
-                String serverVersion = serverVersionString.split("-")[2];
-                if (serverVersionString.split("-").length > 3) {
+                String serverVersion = serverVersionString.split("-")[1];
+                if (serverVersionString.split("-").length > 2) {
                     serverVersion += "-";
-                    serverVersion += serverVersionString.split("-")[3];
+                    serverVersion += serverVersionString.split("-")[2];
                 }
                 String serverModLoader = serverVersionString.split("-")[0];
 

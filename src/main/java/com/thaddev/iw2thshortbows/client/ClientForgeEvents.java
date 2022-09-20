@@ -19,6 +19,7 @@ public class ClientForgeEvents {
             Minecraft.getInstance().font.drawShadow(event.getMatrixStack(), Utils.fromNoTag("(%$white)message displayed when you join!"), 10, 42, 100);
             Minecraft.getInstance().font.drawShadow(event.getMatrixStack(), Utils.fromNoTag("(%$gold)(%$underline)If you encounter a bug and report it, Anything that happens in"), 10, 62, 100);
             Minecraft.getInstance().font.drawShadow(event.getMatrixStack(), Utils.fromNoTag("(%$gold)(%$underline)this server connection instance will not be considered valid evidence."), 10, 74, 100);
+            Minecraft.getInstance().font.drawShadow(event.getMatrixStack(), Utils.fromNoTag("(%$gold)(%$underline)(Unless it's a bug with the Version detection system itself)"), 10, 86, 100);
         }
     }
 }
