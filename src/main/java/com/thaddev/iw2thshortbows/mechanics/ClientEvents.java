@@ -21,6 +21,7 @@ public class ClientEvents {
                 MinecraftClient.getInstance().textRenderer.drawWithShadow(matrixStack, Utils.fromNoTag("(%$white)message displayed when you join!"), 10, 42, 100);
                 MinecraftClient.getInstance().textRenderer.drawWithShadow(matrixStack, Utils.fromNoTag("(%$gold)(%$underline)If you encounter a bug and report it, Anything that happens in"), 10, 62, 100);
                 MinecraftClient.getInstance().textRenderer.drawWithShadow(matrixStack, Utils.fromNoTag("(%$gold)(%$underline)this server connection instance will not be considered valid evidence."), 10, 74, 100);
+                MinecraftClient.getInstance().textRenderer.drawWithShadow(matrixStack, Utils.fromNoTag("(%$gold)(%$underline)(Unless it's a bug with the Version detection system itself)"), 10, 86, 100);
             }
         });
     }
