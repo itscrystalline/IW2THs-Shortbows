@@ -34,8 +34,8 @@
   
   "message.iw2thshortbows.welcome": "Welcome, %1$s! Server is running IWant2TryHard's Shortbows version %2$s, For %3$s %4$s.",
   
-  "menu.iw2thshortbows.modmismatch": "Cool Ideas Mod Version Mismatch",
-  "menu.iw2thshortbows.modmismatchmessage.1": "You are running a different version of Cool Ideas Mod than the server.",
+  "menu.iw2thshortbows.modmismatch": "IWant2TryHard's Shortbows Version Mismatch",
+  "menu.iw2thshortbows.modmismatchmessage.1": "You are running a different version of IWant2TryHard's Shortbows than the server.",
   "menu.iw2thshortbows.modmismatchmessage.2": "Please update your mod version to match the server.",
   "menu.iw2thshortbows.modmismatchmessage.discrepancylist": "Discrepancies:",
   "menu.iw2thshortbows.modmismatchmessage.modloader": "Modloader:",
