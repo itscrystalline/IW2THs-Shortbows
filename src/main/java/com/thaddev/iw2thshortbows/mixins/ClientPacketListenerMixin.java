@@ -26,7 +26,7 @@ public abstract class ClientPacketListenerMixin {
 
     @Shadow public abstract RegistryAccess registryAccess();
 
-    @Inject(method = "handleSystemChat", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Gui;handleSystemChat(Lnet/minecraft/network/chat/ChatType;Lnet/minecraft/network/chat/Component;)V", shift = At.Shift.BEFORE), cancellable = true)
+    @Inject(method = "handleSystemChat", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/multiplayer/chat/ChatListener;handleSystemMessage(Lnet/minecraft/network/chat/Component;Z)V", shift = At.Shift.BEFORE), cancellable = true)
     private void handleSystemChat(ClientboundSystemChatPacket packet, CallbackInfo ci) {
         String message = packet.content().getString();
         if (message.contains("IWant2TryHardsShortbows")) {
@@ -48,14 +48,12 @@ public abstract class ClientPacketListenerMixin {
 
             String niceServerModLoader = Utils.niceify(serverModLoader);
             String niceClientModLoader = Utils.niceify(clientModLoader);
-            Registry<ChatType> registry = this.registryAccess().registryOrThrow(Registry.CHAT_TYPE_REGISTRY);
-            ChatType chatType = packet.resolveType(registry);
-            Minecraft.getInstance().gui.handleSystemChat(
-                chatType,
+            Minecraft.getInstance().getChatListener().handleSystemMessage(
                 component(Utils.from(""))
-                    .append(Component.translatable(IWant2TryHardsShortbows.MESSAGE_WELCOME, Utils.fromNoTag("(%$yellow)" + Minecraft.getInstance().player.getName().getString() + "(%$reset)"), serverVersion, niceServerModLoader, SharedConstants.VERSION_STRING)
-                        .withStyle(ChatFormatting.GRAY)
-                    )
+                .append(Component.translatable(IWant2TryHardsShortbows.MESSAGE_WELCOME, Utils.fromNoTag("(%$yellow)" + Minecraft.getInstance().player.getName().getString() + "(%$reset)"), serverVersion, niceServerModLoader, SharedConstants.VERSION_STRING)
+                    .withStyle(ChatFormatting.GRAY)
+                ),
+                packet.overlay()
             );
 
             if (!serverVersion.equals(clientVersion)) {
