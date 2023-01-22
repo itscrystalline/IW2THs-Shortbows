@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Publish to Modrinth (Forge 1.19)
+name: Publish to Modrinth (Forge 1.19.2)
 
 # Controls when the workflow will run
 on:
@@ -29,14 +29,14 @@ jobs:
         run: ./gradlew build
 
       - name: Rename JAR
-        run: cd build/libs && find . -name 'iw2thshortbows-*.jar' -type f -exec bash -c 'mv "$1" "${1/\/iw2thshortbows-/\/IWant2TryHardsShortbows-forge-119-}"' -- {} \;
+        run: cd build/libs && find . -name 'iw2thshortbows-*.jar' -type f -exec bash -c 'mv "$1" "${1/\/iw2thshortbows-/\/IWant2TryHardsShortbows-forge-1192-}"' -- {} \;
 
 
       - name: Publish to Github Releases
         uses: Kir-Antipov/mc-publish@v3.1
         with:
           loaders: forge
-          game-versions: 1.19
+          game-versions: 1.19.2
           modrinth-id: iwant2tryhards-shortbows
           modrinth-featured: true
           modrinth-unfeature-mode: subset
