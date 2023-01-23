@@ -4,7 +4,7 @@ import com.thaddev.iw2thshortbows.IWant2TryHardsShortbows;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.ClientBrandRetriever;
-import net.minecraft.client.gui.screen.ConfirmChatLinkScreen;
+import net.minecraft.client.gui.screen.ConfirmLinkScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.util.math.MatrixStack;
@@ -51,7 +51,7 @@ public class ModMismatchScreen extends Screen {
         if (!serverModLoader.equals(clientModLoader)) pos += 20;
         this.addDrawableChild(drawCenteredButtonWidget((this.width / 2) - 160, pos + 25, 150, 20, true, Text.translatable(OPEN_CURSEFORGE),
                 (pButtonWidget) ->
-                    this.client.setScreen(new ConfirmChatLinkScreen((confirmed) -> {
+                    this.client.setScreen(new ConfirmLinkScreen((confirmed) -> {
                         if (confirmed) {
                             Util.getOperatingSystem().open("https://www.curseforge.com/minecraft/mc-mods/iwant2tryhards-shortbows/files");
                             Util.getOperatingSystem().open(new File(this.client.runDirectory.getAbsolutePath() + "/mods"));
@@ -66,7 +66,7 @@ public class ModMismatchScreen extends Screen {
         );
         this.addDrawableChild(drawCenteredButtonWidget((this.width / 2), pos + 25, 150, 20, true, Text.translatable(OPEN_MODRINTH),
                 (pButtonWidget) ->
-                    this.client.setScreen(new ConfirmChatLinkScreen((confirmed) -> {
+                    this.client.setScreen(new ConfirmLinkScreen((confirmed) -> {
                         if (confirmed) {
                             Util.getOperatingSystem().open("https://modrinth.com/mod/iwant2tryhards-shortbows/version/" + IWant2TryHardsShortbows.buildVersionString(ClientBrandRetriever.getClientModName()));
                             Util.getOperatingSystem().open(new File(this.client.runDirectory.getAbsolutePath() + "/mods"));
@@ -81,7 +81,7 @@ public class ModMismatchScreen extends Screen {
         );
         this.addDrawableChild(drawCenteredButtonWidget((this.width / 2) + 160, pos + 25, 150, 20, true, Text.translatable(OPEN_GITHUB),
                 (pButtonWidget) ->
-                    this.client.setScreen(new ConfirmChatLinkScreen((confirmed) -> {
+                    this.client.setScreen(new ConfirmLinkScreen((confirmed) -> {
                         if (confirmed) {
                             Util.getOperatingSystem().open("https://github.com/MyNameTsThad/IW2THs-Shortbows");
                             Util.getOperatingSystem().open(new File(this.client.runDirectory.getAbsolutePath() + "/mods"));

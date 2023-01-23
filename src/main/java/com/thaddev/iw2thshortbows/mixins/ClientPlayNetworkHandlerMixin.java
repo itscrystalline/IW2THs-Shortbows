@@ -26,7 +26,7 @@ public class ClientPlayNetworkHandlerMixin {
     @Shadow
     private DynamicRegistryManager.Immutable registryManager;
 
-    @Inject(method = "onGameMessage", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/InGameHud;onGameMessage(Lnet/minecraft/network/message/MessageType;Lnet/minecraft/text/Text;)V", shift = At.Shift.BEFORE), cancellable = true)
+    @Inject(method = "onGameMessage", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/message/MessageHandler;onGameMessage(Lnet/minecraft/text/Text;Z)V", shift = At.Shift.BEFORE), cancellable = true)
     private void onGameMessage(GameMessageS2CPacket packet, CallbackInfo ci) {
         String message = packet.content().getString();
         if (message.contains("IWant2TryHardsShortbows")) {
@@ -47,15 +47,13 @@ public class ClientPlayNetworkHandlerMixin {
             //TO SEND: [CoolIdeas] Welcome, <playerName>! Server is running Cool Ideas Mod version <modVersion>, For <modLoader> <gameVersion>.
 
             Registry<MessageType> registry = this.registryManager.get(Registry.MESSAGE_TYPE_KEY);
-            MessageType messageType = packet.getMessageType(registry);
             String niceServerModLoader = Utils.niceify(serverModLoader);
             String niceClientModLoader = Utils.niceify(clientModLoader);
-            MinecraftClient.getInstance().inGameHud.onGameMessage(
-                messageType,
+            MinecraftClient.getInstance().getMessageHandler().onGameMessage(
                 component(Utils.from(""))
                     .append(Text.translatable(IWant2TryHardsShortbows.MESSAGE_WELCOME, Utils.fromNoTag("(%$yellow)" + MinecraftClient.getInstance().player.getName().getString() + "(%$reset)"), serverVersion, niceServerModLoader, SharedConstants.VERSION_NAME)
                         .formatted(Formatting.GRAY)
-                    )
+                    ), packet.overlay()
             );
 
             if (!serverVersion.equals(clientVersion)) {
