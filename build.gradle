@@ -111,7 +111,7 @@ jar {
         ])
     }
 
-    rename 'mixin.refmap.json', 'iw2thshortbows.mixin-refmap.json'
+    rename 'mixin.refmap.json', 'mixin-refmap.json'
 }
 
 jar.finalizedBy('reobfJar')
