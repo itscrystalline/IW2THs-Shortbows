@@ -177,10 +177,8 @@ public class ShortBowBase extends BowItem {
         AbstractArrow shortBowArrow;
 
         if (itemstack.is(Items.ARROW) || itemstack.is(Items.TIPPED_ARROW)) {
-            //CoolIdeasMod.instance.printMessage("Shooting Regular Arrow!");
             shortBowArrow = createShortBowArrow(world, itemstack, player);
         } else {
-            //CoolIdeasMod.instance.printMessage("Shooting Custom Arrow!");
             shortBowArrow = arrowitem.createArrow(world, itemstack, player);
         }
 
