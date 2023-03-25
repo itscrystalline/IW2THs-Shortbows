@@ -20,7 +20,7 @@ public class IWant2TryHardsShortbows implements ModInitializer {
 	public static final CustomLogger LOGGER = new CustomLogger(MODID);
 	public static IWant2TryHardsShortbows instance;
 	public static IWant2TryHardsShortbowsClient client;
-	public static String VERSION = "1.1.2-patch1";
+	public static String VERSION = "1.1.3";
 
 	public static final String MESSAGE_WELCOME = "message.iw2thshortbows.welcome";
 	public static final String SCREEN_VERSION_MISMATCH = "menu.iw2thshortbows.modmismatch";
