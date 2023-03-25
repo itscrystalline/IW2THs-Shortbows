@@ -96,9 +96,6 @@ public class ShortBowBase extends BowItem {
                     if (strengthBoost > 0){
                         PotionUtils.getPotion(itemstack).getEffects().forEach(effect -> {
                             if (effect.getEffect().isInstantenous()){
-//                                player.addEffect(new MobEffectInstance(effect.getEffect(), 1, (effect.getAmplifier() + 1) > 1 ?
-//                                        (int) Math.round(Math.floor(effect.getAmplifier() / 2f)) :
-//                                        effect.getAmplifier()));
                                 effect.getEffect().applyInstantenousEffect(null, player, player, (effect.getAmplifier() + 1) > 1 ?
                                         (int) Math.round(Math.floor(effect.getAmplifier() / 2f)) :
                                         effect.getAmplifier(), 1);
@@ -180,10 +177,8 @@ public class ShortBowBase extends BowItem {
         AbstractArrow shortBowArrow;
 
         if (itemstack.is(Items.ARROW) || itemstack.is(Items.TIPPED_ARROW)) {
-            //CoolIdeasMod.instance.printMessage("Shooting Regular Arrow!");
             shortBowArrow = createShortBowArrow(world, itemstack, player);
         } else {
-            //CoolIdeasMod.instance.printMessage("Shooting Custom Arrow!");
             shortBowArrow = arrowitem.createArrow(world, itemstack, player);
         }
 
