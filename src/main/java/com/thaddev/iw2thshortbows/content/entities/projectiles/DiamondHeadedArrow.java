@@ -36,7 +36,6 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import java.util.UUID;
 
 public class DiamondHeadedArrow extends PersistentProjectileEntity {
     private static final int MAX_POTION_DURATION_TICKS = 600;
@@ -299,19 +298,36 @@ public class DiamondHeadedArrow extends PersistentProjectileEntity {
     //HOMING BEHAVIOR
     private void setTarget() {
         if (target == null || target.isDead() || (target instanceof EnderDragonEntity dragon && dragon.getPhaseManager().getCurrent().getType() == PhaseType.DYING)) {
-            Box box = new Box(new BlockPos(this.getPos())).expand(20).stretch(0.0D, world.getHeight(), 0.0D);
-            List<LivingEntity> potentialTargets = world.getEntitiesByClass(LivingEntity.class, box, livingEntity -> true)
-                    .stream()
-                    .filter(entity -> !entity.isDead() &&
-                            entity instanceof Monster &&
-                            entity.canSee(this) &&
-                            !(entity instanceof EndermanEntity) &&
-                            (!(entity instanceof WitherEntity) || !((WitherEntity) entity).shouldRenderOverlay()) &&
-                            !(entity instanceof EnderDragonEntity) ||
-                            !isDragonSittingOrDying((EnderDragonEntity) entity) &&
-                                    !(entity instanceof PlayerEntity) ||
-                            !playerMatchesOwner((PlayerEntity) entity))
-                    .toList();
+            Box box = (new Box(new BlockPos(this.getPos()))).expand(20).stretch(0.0D, world.getHeight(), 0.0D);
+            List<LivingEntity> potentialTargets = this.world.getEntitiesByClass(LivingEntity.class, box, livingEntity -> true);
+
+            if (potentialTargets.isEmpty()) {
+                target = null;
+                return;
+            }
+
+            potentialTargets.removeIf(LivingEntity::isDead);
+            potentialTargets.removeIf(entity -> !(entity instanceof Monster));
+            potentialTargets.removeIf(entity -> !entity.canSee(this));
+            potentialTargets.removeIf(entity -> entity instanceof EndermanEntity);
+            potentialTargets.removeIf(entity -> (entity instanceof WitherEntity boss && boss.shouldRenderOverlay()));
+            potentialTargets.removeIf(entity -> {
+                if (entity instanceof EnderDragonEntity) {
+                    PhaseType<? extends Phase> phase = ((EnderDragonEntity) entity).getPhaseManager().getCurrent().getType();
+                    return phase == PhaseType.SITTING_ATTACKING ||
+                            phase == PhaseType.SITTING_SCANNING ||
+                            phase == PhaseType.SITTING_FLAMING ||
+                            phase == PhaseType.DYING;
+                }
+                return false;
+            });
+            potentialTargets.removeIf(entity ->
+                    entity instanceof PlayerEntity player &&
+                            player.getUuid().equals(Objects.requireNonNull(this.getOwner()).getUuid())
+            );
+            potentialTargets.removeIf(entity ->
+                    entity instanceof PlayerEntity player && (player.isCreative() || player.isSpectator())
+            );
 
             if (potentialTargets.isEmpty()) {
                 target = null;
@@ -320,17 +336,5 @@ public class DiamondHeadedArrow extends PersistentProjectileEntity {
 
             target = potentialTargets.get(random.nextInt(potentialTargets.size()));
         }
-    }
-    private boolean isDragonSittingOrDying(EnderDragonEntity dragon) {
-        PhaseType<? extends Phase> phase = dragon.getPhaseManager().getCurrent().getType();
-        return phase == PhaseType.SITTING_ATTACKING ||
-                phase == PhaseType.SITTING_SCANNING ||
-                phase == PhaseType.SITTING_FLAMING ||
-                phase == PhaseType.DYING;
-    }
-
-    private boolean playerMatchesOwner(PlayerEntity player) {
-        UUID ownerUUID = Objects.requireNonNull(this.getOwner()).getUuid();
-        return player.getUuid().equals(ownerUUID) || player.isCreative() || player.isSpectator();
     }
 }
