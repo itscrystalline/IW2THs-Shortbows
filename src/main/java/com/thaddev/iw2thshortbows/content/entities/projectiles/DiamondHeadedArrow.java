@@ -37,7 +37,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import java.util.UUID;
 
 public class DiamondHeadedArrow extends AbstractArrow {
     private static final int EXPOSED_POTION_DECAY_TIME = 600;
@@ -316,19 +315,36 @@ public class DiamondHeadedArrow extends AbstractArrow {
     //HOMING BEHAVIOR
     private void setTarget() {
         if (target == null || target.isDeadOrDying() || (target instanceof EnderDragon dragon && dragon.getPhaseManager().getCurrentPhase().getPhase() == EnderDragonPhase.DYING)) {
-            AABB aabb = new AABB(new BlockPos(this.position())).inflate(20).expandTowards(0.0D, level.getHeight(), 0.0D);
-            List<LivingEntity> potentialTargets = level.getEntitiesOfClass(LivingEntity.class, aabb)
-                    .stream()
-                    .filter(entity -> !entity.isDeadOrDying() &&
-                            entity instanceof Enemy &&
-                            entity.hasLineOfSight(this) &&
-                            !(entity instanceof EnderMan) &&
-                            (!(entity instanceof WitherBoss) || !((WitherBoss) entity).isPowered()) &&
-                            !(entity instanceof EnderDragon) ||
-                            !isDragonSittingOrDying((EnderDragon) entity) &&
-                                    !(entity instanceof Player) ||
-                            !playerMatchesOwner((Player) entity))
-                    .toList();
+            AABB aabb = (new AABB(new BlockPos(this.position()))).inflate(20).expandTowards(0.0D, level.getHeight(), 0.0D);
+            List<LivingEntity> potentialTargets = this.level.getEntitiesOfClass(LivingEntity.class, aabb);
+
+            if (potentialTargets.size() == 0) {
+                target = null;
+                return;
+            }
+
+            potentialTargets.removeIf(LivingEntity::isDeadOrDying);
+            potentialTargets.removeIf(entity -> !(entity instanceof Enemy));
+            potentialTargets.removeIf(entity -> !entity.hasLineOfSight(this));
+            potentialTargets.removeIf(entity -> entity instanceof EnderMan);
+            potentialTargets.removeIf(entity -> (entity instanceof WitherBoss boss && boss.isPowered()));
+            potentialTargets.removeIf(entity -> {
+                if (entity instanceof EnderDragon){
+                    EnderDragonPhase<? extends DragonPhaseInstance> phase = ((EnderDragon) entity).getPhaseManager().getCurrentPhase().getPhase();
+                    return phase == EnderDragonPhase.SITTING_ATTACKING ||
+                            phase == EnderDragonPhase.SITTING_SCANNING ||
+                            phase == EnderDragonPhase.SITTING_FLAMING ||
+                            phase == EnderDragonPhase.DYING;
+                }
+                return false;
+            });
+            potentialTargets.removeIf(entity ->
+                    entity instanceof Player player &&
+                            player.getUUID().equals(Objects.requireNonNull(this.getOwner()).getUUID())
+            );
+            potentialTargets.removeIf(entity ->
+                    entity instanceof Player player && (player.isCreative() || player.isSpectator())
+            );
 
             if (potentialTargets.isEmpty()) {
                 target = null;
@@ -337,17 +353,5 @@ public class DiamondHeadedArrow extends AbstractArrow {
 
             target = potentialTargets.get(random.nextInt(potentialTargets.size()));
         }
-    }
-    private boolean isDragonSittingOrDying(EnderDragon dragon) {
-        EnderDragonPhase<? extends DragonPhaseInstance> phase = dragon.getPhaseManager().getCurrentPhase().getPhase();
-        return phase == EnderDragonPhase.SITTING_ATTACKING ||
-                phase == EnderDragonPhase.SITTING_SCANNING ||
-                phase == EnderDragonPhase.SITTING_FLAMING ||
-                phase == EnderDragonPhase.DYING;
-    }
-
-    private boolean playerMatchesOwner(Player player) {
-        UUID ownerUUID = Objects.requireNonNull(this.getOwner()).getUUID();
-        return player.getUUID().equals(ownerUUID) || player.isCreative() || player.isSpectator();
     }
 }
