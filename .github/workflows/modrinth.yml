@@ -39,5 +39,5 @@ jobs:
           game-versions: 1.19
           modrinth-id: iwant2tryhards-shortbows
           modrinth-featured: true
-          modrinth-unfeature-mode: subset
+          modrinth-unfeature-mode: intersection
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
